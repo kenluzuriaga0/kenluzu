@@ -1,6 +1,6 @@
 site:
   name: Ken Luzuriaga
-  site: 'https://astrowind.vercel.app'
+  site: 'https://kenluzu.netlify.app/'
   base: '/'
   trailingSlash: false
 

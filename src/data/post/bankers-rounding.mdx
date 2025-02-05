@@ -1,0 +1,45 @@
+---
+publishDate: 2024-12-08T00:00:00Z
+title: Banker's Rounding
+excerpt: How to be more accurate with decimals
+image: ~/assets/images/post-1_portrait.png
+category: coding
+tags:
+  - python
+  - math
+metadata:
+  canonical: https://https://kenluzu.netlify.app/bankers-rounding
+---
+
+It's a rounding method that consist if the number before the number to be rounded, is higher than 5, then it wounding up, and if the number before to the number to be round is lower than 5, then rounding down. So far it is simple. **The interesting behavior is when the number to be rounded is exactly 5**. When it is 5, depends to the number before 5 if it's **even or odd**. 
+If it's even, round down
+if it's odd, round up
+
+Or in another words,
+Round to the even number closer to the number before the 5
+
+In the following table, see the efficacy of the banker's rounding
+
+
+|                  | **Standard Rounding** |                 | **Banker's Rounding** |                        |
+| ---------------- |:---------------------:| --------------- |:---------------------:| ----------------------:|
+| **Interest**     | **Result**            | **Deviation**   | **Result**            | **Deviation**          |
+| 0.005            | 0.01                  | 0.005           | 0                     | -0.005                 |
+| 0.015            | 0.02                  | 0.005           | 0.02                  | 0.005                  |
+| 0.025            | 0.03                  | 0.005           | 0.02                  | -0.005                 |
+| 0.035            | 0.04                  | 0.005           | 0.04                  | 0.005                  |
+| 0.045            | 0.05                  | 0.005           | 0.04                  | -0.005                 |
+|                 |                        |                 |                        |                        |
+| **0.125**        | **0.15**               | **0.025**       | **0.12**              | **0.005**              |
+
+I discovered this because I saw a thread's post which it said a question about coding. The question was:
+
+**Why does this happen?**
+
+```python
+>>> print(round(6.045))
+6.04
+>>> print(round(6.035))
+6.04
+```
+Now you know why. It's because the default rounding method in Python is the Banker's Rounding.

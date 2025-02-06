@@ -17,7 +17,26 @@ const { metadata } = Astro.props;
 
 <Layout metadata={metadata}>
   <slot name="header">
-    <Header {...headerData} isSticky showRssFeed showToggleTheme />
+    <!-- <Header {...headerData} isSticky showRssFeed showToggleTheme /> Nav by default -->
+    <Fragment slot="header">
+      <Header
+        links={[
+          { text: 'Home', href: '/' },
+          { text: 'About', href: '/#about' },
+          { text: 'Resume', href: '/#resume' },
+          { text: 'Porfolio', href: '#porfolio' },
+          { text: 'Blog', href: '#blog' },
+        ]}
+        actions={[
+          {
+            text: 'Hire me',
+            href: '#',
+          },
+        ]}
+        isSticky
+        showToggleTheme
+      />
+    </Fragment>
   </slot>
   <main>
     <slot />

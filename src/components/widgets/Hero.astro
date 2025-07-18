@@ -1,8 +1,9 @@
 ---
 import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
-
+import Waves from '~/components/ui/Waves.astro';
 import type { Hero as Props } from '~/types';
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
 
 const {
   title = await Astro.slots.render('title'),
@@ -30,6 +31,10 @@ const {
     <!-- Ken Luzu Image ******************* -->
 
     <div class="intersect-once intercept-no-queue intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+  <WidgetWrapper
+    id={id}
+    classes={{ root: 'relative bg-primary-50 dark:bg-violet-800' }}
+  >
       {
         image && (
           <div class="relative m-auto max-w-5xl">
@@ -75,7 +80,7 @@ const {
           {
             subtitle && (
               <p
-                class="text-xl text-muted mb-6 dark:text-slate-300 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+                class="text-lg text-muted mb-6 dark:text-slate-400 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
                 set:html={subtitle}
               />
             )
@@ -100,4 +105,10 @@ const {
       </div>
     </div>
   </div>
+  <Waves />
+</WidgetWrapper>
+      </div>
+    </div>
+  </div>
+  
 </section>

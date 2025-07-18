@@ -21,12 +21,17 @@ export default {
 
       animation: {
         fade: 'fadeInUp 1s both',
+        'move-forever': 'move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite',
       },
 
       keyframes: {
         fadeInUp: {
           '0%': { opacity: 0, transform: 'translateY(2rem)' },
           '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        'move-forever': {
+          '0%': { transform: 'translate3d(-90px, 0, 0)' },
+          '100%': { transform: 'translate3d(85px, 0, 0)' },
         },
       },
     },

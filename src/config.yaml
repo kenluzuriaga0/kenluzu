@@ -1,6 +1,6 @@
 site:
   name: Ken Luzuriaga
-  site: 'https://kenluzu.netlify.app/'
+  site: 'https://kenluzuriaga.com/'
   base: '/'
   trailingSlash: false
 
@@ -9,7 +9,7 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
+    default: Ken Luzuriaga
     template: '%s'
   description: "\U0001F680 Professional Portfolio of Ken Luzuriaga."
   robots:

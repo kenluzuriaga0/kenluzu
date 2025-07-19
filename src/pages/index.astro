@@ -10,6 +10,7 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import { getPermalink } from '~/utils/permalinks';
+import HeroImage from '~/assets/images/ken-luzu-hero-image.png';
 
 const metadata = {
   title: 'Ken Luzuriaga',
@@ -52,9 +53,16 @@ const metadata = {
       },
     ]}
   >
+    <Fragment slot="image">
+      <img
+        src={HeroImage.src}
+        alt="Ken Luzuriaga"
+        style="width: 100px; border-radius: 8px; margin: auto;"
+        loading="eager"
+      />
+    </Fragment>
     <Fragment slot="subtitle">
-      I am a technology enthusiast with immense intellectual curiosity. I have experience working in teams and I focus
-      on backend development technologies. However, I am always willing to expand to other IT areas.
+      I’m a backend-focused developer passionate about learning and growth. I enjoy working in teams and I’m always open to exploring other areas of IT
     </Fragment>
   </Hero>
 
@@ -105,10 +113,10 @@ const metadata = {
     <Fragment slot="content">
       <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
       <p>
-        I am working on this quirky and crazy section. Meanwhile, just see my face
+        I am a technology enthusiast with immense intellectual curiosity. I have experience working in teams and I focus on backend development technologies. However, I am always willing to expand to other IT areas.
         <br />
         <br />
-        <p>If you can't stand the wait, you can follow me :</p>
+        <p>If you like, you can follow me :</p>
       </p>
 
       <Fragment slot="bg">
@@ -146,7 +154,7 @@ const metadata = {
   <!-- Features3 Widget ************** -->
   <Features3
     title="Skills"
-    subtitle="Tools from my batman belt"
+    subtitle="Tools from my batman belt 🦇 "
     columns={3}
     defaultIcon="tabler:point-filled"
     items={[

@@ -22,10 +22,10 @@ const metadata = {
     <Header
       links={[
         { text: 'Home', href: '#' },
+        { text: 'Blog', href: '#blog' },
         { text: 'About', href: '#about' },
         { text: 'Resume', href: '#resume' },
-        { text: 'Porfolio', href: '#porfolio' },
-        { text: 'Blog', href: '#blog' },
+        { text: 'Portfolio', href: '#portfolio' },
       ]}
       actions={[
         {
@@ -150,6 +150,153 @@ const metadata = {
     ]}
     classes={{ container: 'max-w-3xl' }}
   />
+
+
+   <!-- Content Widget **************** -->
+
+   <Content
+   title="Projects"
+   id="portfolio"
+    isReversed
+    items={[
+      {
+        title: 'Description:',
+        description: `Developed a web application to generate personalized QR codes for members of the Naval Sports Association (ADN), used for identification and access control.
+It Includes automated module for sending birthday greeting emails to members.`,
+      },
+      {
+        title: 'Tech Stack:',
+        description: `FastAPI, React, Vite, PostgreSQL, AWS S3`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/adn.png',
+      alt: 'ADN Image',
+      width: 480,
+      height: 230,
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Go to the project',
+      icon: 'tabler:chevron-right',
+      href: 'https://app.asociaciondeportivanaval.com/',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">Web App to generate QR codes for ADN</span>
+      </h3>
+    </Fragment>
+
+  </Content>
+
+   <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: `Freelance full stack project to manage the occupational orders for Biolaboratorio`,
+      },
+      {
+        title: 'Tech Stack:',
+        description: `Angular 17, Spring Boot 2.7, PostgreSQL, AWS S3`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/biolaboratorio.png',
+      alt: 'BioLaboratorio Image',
+      height: 230,
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Go to the project',
+      icon: 'tabler:chevron-right',
+      href: 'https://biolaboratorio.up.railway.app',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">BioLaboratorio</span>
+      </h3>
+    </Fragment>
+
+  </Content>
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description:
+          'Web application for registering information about children intervened on the streets of Ecuador, aimed at MIES (Ministry of Economic and Social Inclusion) and DINAPEN',
+      },
+        {
+        title: 'Tech Stack:',
+        description:
+          'Angular 14, PHP 7, Mysql',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/mies.jpg',
+      alt: 'Tech Design Image',
+      width: 500,
+      height: 300,
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Go to the source code',
+      icon: 'tabler:chevron-right',
+      href: 'https://github.com/kenluzuriaga0/miesDinapenWeb',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+       <span class="text-2xl">Web app for Mies-Dinapen</span>
+      </h3>
+    </Fragment>
+
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description:
+          'Application for converting audio to text using AWS services. It allows users to upload audio files, which are then processed to extract text content.',
+      },
+      {
+        title: 'Tech Stack:',
+        description: `Angular 14, AWS: Transcribe, S3, Lambdas, API Gateway`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/medical.png',
+      alt: 'Medical Record Image',
+      height: 290,
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Go to the source code',
+      icon: 'tabler:chevron-right',
+      href: 'https://github.com/kenluzuriaga0/MedicalRecordCloud',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">Medical Record Cloud</span>
+      </h3>
+    </Fragment>
+
+  </Content>
+
 
   <!-- Features3 Widget ************** -->
   <Features3

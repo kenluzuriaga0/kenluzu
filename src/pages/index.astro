@@ -48,7 +48,7 @@ const metadata = {
       {
         variant: 'secondary',
         text: 'View CV',
-        href: getPermalink('https://drive.google.com/file/d/1fUFtf0wLjBRg79-kFwb4ftLAaMeGyVbz/view?usp=sharing'),
+        href: getPermalink('https://drive.google.com/file/d/1j4nN6t4mL7qhq7lv26pUOjdL9Yevzi11/view?usp=sharing'),
         target: '_blank',
       },
     ]}
@@ -151,13 +151,48 @@ const metadata = {
     classes={{ container: 'max-w-3xl' }}
   />
 
+     <!-- Content Widget **************** -->
+
+  <Content classes={{ container: 'mt-10' }}
+   title="Projects"
+   id="portfolio"
+    isReversed
+    items={[
+      {
+        title: 'Description:',
+        description: `Developed a mobile-first website for 'Presentza' Perfumery to showcase products and streamline customer interactions.`,
+      },
+      {
+        title: 'Tech Stack:',
+        description: `React 19, Vite`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/presentza.png',
+      alt: 'Presentza Image',
+      width: 480,
+      height: 230,
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Go to the project',
+      icon: 'tabler:chevron-right',
+      href: 'https://presentza.netlify.app/',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">Presentza Perfumery Website</span>
+      </h3>
+    </Fragment>
+
+  </Content>
 
    <!-- Content Widget **************** -->
 
    <Content classes={{ container: 'mt-10' }}
-   title="Projects"
-   id="portfolio"
     isReversed
+    isAfterContent={true}
     items={[
       {
         title: 'Description:',

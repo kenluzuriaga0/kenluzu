@@ -146,6 +146,6 @@ export const footerData = {
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/kenluzuriaga0' },
   ],
   footNote: `
-    Made by <a class="text-blue-600 underline dark:text-muted" href="https://bento.me/kenluzuriaga"> Ken Luzuriaga</a> · All rights reserved.
+    Made by  Ken Luzuriaga · All rights reserved.
   `,
 };

@@ -4,9 +4,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Content from '~/components/widgets/Content.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features3 from '~/components/widgets/Features3.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import { getPermalink } from '~/utils/permalinks';
@@ -62,7 +60,8 @@ const metadata = {
       />
     </Fragment>
     <Fragment slot="subtitle">
-      I’m a backend-focused developer passionate about learning and growth. I enjoy working in teams and I’m always open to exploring other areas of IT
+      I’m a backend-focused developer passionate about learning and growth. I enjoy working in teams and I’m always open
+      to exploring other areas of IT
     </Fragment>
   </Hero>
 
@@ -75,7 +74,8 @@ const metadata = {
   />
   <!-- Content Widget **************** -->
 
-  <Content classes={{ container: 'mb-8 mt-8' }}
+  <Content
+    classes={{ container: 'mb-8 mt-8' }}
     id="about"
     columns={3}
     items={[
@@ -113,7 +113,8 @@ const metadata = {
     <Fragment slot="content">
       <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
       <p>
-        I am a technology enthusiast with immense intellectual curiosity. I have experience working in teams and I focus on backend development technologies. However, I am always willing to expand to other IT areas.
+        I am a technology enthusiast with immense intellectual curiosity. I have experience working in teams and I focus
+        on backend development technologies. However, I am always willing to expand to other IT areas.
         <br />
         <br />
         <p>If you like, you can follow me :</p>
@@ -151,11 +152,12 @@ const metadata = {
     classes={{ container: 'max-w-3xl' }}
   />
 
-     <!-- Content Widget **************** -->
+  <!-- Content Widget **************** -->
 
-  <Content classes={{ container: 'mt-10' }}
-   title="Projects"
-   id="portfolio"
+  <Content
+    classes={{ container: 'mt-10' }}
+    title="Projects"
+    id="portfolio"
     isReversed
     items={[
       {
@@ -185,12 +187,12 @@ const metadata = {
         <span class="text-2xl">Presentza Perfumery Website</span>
       </h3>
     </Fragment>
-
   </Content>
 
-   <!-- Content Widget **************** -->
+  <!-- Content Widget **************** -->
 
-   <Content classes={{ container: 'mt-10' }}
+  <Content
+    classes={{ container: 'mt-10' }}
     isReversed
     isAfterContent={true}
     items={[
@@ -222,10 +224,9 @@ It Includes automated module for sending birthday greeting emails to members.`,
         <span class="text-2xl">Web App to generate QR codes for ADN</span>
       </h3>
     </Fragment>
-
   </Content>
 
-   <!-- Content Widget **************** -->
+  <!-- Content Widget **************** -->
 
   <Content
     isReversed
@@ -257,7 +258,6 @@ It Includes automated module for sending birthday greeting emails to members.`,
         <span class="text-2xl">BioLaboratorio</span>
       </h3>
     </Fragment>
-
   </Content>
 
   <Content
@@ -269,10 +269,9 @@ It Includes automated module for sending birthday greeting emails to members.`,
         description:
           'Web application for registering information about children intervened on the streets of Ecuador, aimed at MIES (Ministry of Economic and Social Inclusion) and DINAPEN',
       },
-        {
+      {
         title: 'Tech Stack:',
-        description:
-          'Angular 14, PHP 7, Mysql',
+        description: 'Angular 14, PHP 7, Mysql',
       },
     ]}
     image={{
@@ -290,10 +289,9 @@ It Includes automated module for sending birthday greeting emails to members.`,
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-       <span class="text-2xl">Web app for Mies-Dinapen</span>
+        <span class="text-2xl">Web app for Mies-Dinapen</span>
       </h3>
     </Fragment>
-
   </Content>
 
   <!-- Content Widget **************** -->
@@ -329,12 +327,11 @@ It Includes automated module for sending birthday greeting emails to members.`,
         <span class="text-2xl">Medical Record Cloud</span>
       </h3>
     </Fragment>
-
   </Content>
 
-
   <!-- Features3 Widget ************** -->
-  <Features3 classes={{ container: 'mt-10' }}
+  <Features3
+    classes={{ container: 'mt-10' }}
     title="Skills"
     subtitle="Tools from my batman belt 🦇 "
     columns={3}

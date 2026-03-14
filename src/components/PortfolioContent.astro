@@ -1,0 +1,455 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Header from '~/components/widgets/Header.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import { getPermalink } from '~/utils/permalinks';
+import HeroImage from '~/assets/images/ken-luzu-hero-image.png';
+import type { Language } from '~/i18n';
+
+interface Props {
+  lang: Language;
+  t: {
+    nav: {
+      home: string;
+      blog: string;
+      about: string;
+      resume: string;
+      portfolio: string;
+      hireMe: string;
+    };
+    hero: {
+      title: string;
+      tagline: string;
+      viewCV: string;
+      subtitle: string;
+    };
+    blog: {
+      title: string;
+      info: string;
+    };
+    about: {
+      title: string;
+      description1: string;
+      description2: string;
+    };
+    workExperience: {
+      title: string;
+      jobs: {
+        trescloud: {
+          title: string;
+          company: string;
+          location: string;
+          period: string;
+          description1: string;
+          description2: string;
+        };
+        medilink: {
+          title: string;
+          company: string;
+          location: string;
+          period: string;
+          description1: string;
+          description2: string;
+        };
+      };
+    };
+    projects: {
+      title: string;
+      presentza: {
+        title: string;
+        description: string;
+        techStack: string;
+        cta: string;
+      };
+      adn: {
+        title: string;
+        description: string;
+        techStack: string;
+        cta: string;
+      };
+      biolaboratorio: {
+        title: string;
+        description: string;
+        techStack: string;
+        cta: string;
+      };
+      mies: {
+        title: string;
+        description: string;
+        techStack: string;
+        cta: string;
+      };
+      medical: {
+        title: string;
+        description: string;
+        techStack: string;
+        cta: string;
+      };
+    };
+    skills: {
+      title: string;
+      subtitle: string;
+    };
+    footer: {
+      madeBy: string;
+    };
+  };
+}
+
+const { lang, t } = Astro.props;
+
+const metadata = {
+  title: 'Ken Luzuriaga',
+};
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="header">
+    <Header
+      lang={lang}
+      links={[
+        { text: t.nav.home, href: '#' },
+        { text: t.nav.blog, href: '#blog' },
+        { text: t.nav.about, href: '#about' },
+        { text: t.nav.resume, href: '#resume' },
+        { text: t.nav.portfolio, href: '#portfolio' },
+      ]}
+      actions={[
+        {
+          text: t.nav.hireMe,
+          href: '#',
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    id="hero"
+    title={t.hero.title}
+    tagline={t.hero.tagline}
+    actions={[
+      {
+        variant: 'secondary',
+        text: t.hero.viewCV,
+        href: getPermalink('https://drive.google.com/file/d/1j4nN6t4mL7qhq7lv26pUOjdL9Yevzi11/view?usp=sharing'),
+        target: '_blank',
+      },
+    ]}
+  >
+    <Fragment slot="image">
+      <img
+        src={HeroImage.src}
+        alt="Ken Luzuriaga"
+        style="width: 100px; border-radius: 8px; margin: auto;"
+        loading="eager"
+      />
+    </Fragment>
+    <Fragment slot="subtitle">
+      {t.hero.subtitle}
+    </Fragment>
+  </Hero>
+
+  <!-- Blog Widget **************** -->
+
+  <BlogLatestPosts
+    id="blog"
+    title={t.blog.title}
+    information={t.blog.info}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    classes={{ container: 'mb-8 mt-8' }}
+    id="about"
+    columns={3}
+    items={[
+      {
+        icon: 'tabler:brand-linkedin',
+        callToAction: {
+          target: '_blank',
+          text: 'Linkedin',
+          href: 'https://www.linkedin.com/in/kenluzuriaga0',
+        },
+      },
+      {
+        icon: 'tabler:brand-github',
+        callToAction: {
+          target: '_blank',
+          text: 'Github',
+          href: 'https://github.com/kenluzuriaga0',
+        },
+      },
+      {
+        icon: 'tabler:brand-instagram',
+        callToAction: {
+          target: '_blank',
+          text: 'Instagram',
+          href: 'https://www.instagram.com/ken_nlm',
+        },
+      },
+    ]}
+    image={{
+      src: '~/assets/images/portrait.jpg',
+      alt: 'Ken face Image',
+      loading: 'eager',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">{t.about.title}</h2>
+      <p>
+        {t.about.description1}
+        <br />
+        <br />
+        <p>{t.about.description2}</p>
+      </p>
+
+      <Fragment slot="bg">
+        <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      </Fragment>
+    </Fragment>
+  </Content>
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="resume"
+    title={t.workExperience.title}
+    items={[
+      {
+        title:
+          `${t.workExperience.jobs.trescloud.title} <br /> <span class="font-normal">${t.workExperience.jobs.trescloud.company},  <small> ${t.workExperience.jobs.trescloud.location}  </small></span> <br /> <span class="text-sm font-normal">${t.workExperience.jobs.trescloud.period}</span>`,
+        description: `📌 ${t.workExperience.jobs.trescloud.description1} <br />
+        📌 ${t.workExperience.jobs.trescloud.description2}`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          `${t.workExperience.jobs.medilink.title} <br /> <span class="font-normal">${t.workExperience.jobs.medilink.company}, <small> ${t.workExperience.jobs.medilink.location} </small></span> <br /> <span class="text-sm font-normal">${t.workExperience.jobs.medilink.period}</span>`,
+        description: `📌 ${t.workExperience.jobs.medilink.description1} <br />
+        📌 ${t.workExperience.jobs.medilink.description2}`,
+        icon: 'tabler:briefcase',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    classes={{ container: 'mt-10' }}
+    title={t.projects.title}
+    id="portfolio"
+    isReversed
+    items={[
+      {
+        title: lang === 'es' ? 'Descripción:' : 'Description:',
+        description: t.projects.presentza.description,
+      },
+      {
+        title: lang === 'es' ? 'Tecnologías:' : 'Tech Stack:',
+        description: t.projects.presentza.techStack,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/presentza.png',
+      alt: 'Presentza Image',
+      width: 480,
+      height: 230,
+    }}
+    callToAction={{
+      target: '_blank',
+      text: t.projects.presentza.cta,
+      icon: 'tabler:chevron-right',
+      href: 'https://presentza.netlify.app/',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">{t.projects.presentza.title}</span>
+      </h3>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    classes={{ container: 'mt-10' }}
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: lang === 'es' ? 'Descripción:' : 'Description:',
+        description: t.projects.adn.description,
+      },
+      {
+        title: lang === 'es' ? 'Tecnologías:' : 'Tech Stack:',
+        description: t.projects.adn.techStack,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/adn.png',
+      alt: 'ADN Image',
+      width: 480,
+      height: 230,
+    }}
+    callToAction={{
+      target: '_blank',
+      text: t.projects.adn.cta,
+      icon: 'tabler:chevron-right',
+      href: 'https://app.asociaciondeportivanaval.com/',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">{t.projects.adn.title}</span>
+      </h3>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: lang === 'es' ? 'Descripción:' : 'Description:',
+        description: t.projects.biolaboratorio.description,
+      },
+      {
+        title: lang === 'es' ? 'Tecnologías:' : 'Tech Stack:',
+        description: t.projects.biolaboratorio.techStack,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/biolaboratorio.png',
+      alt: 'BioLaboratorio Image',
+      height: 230,
+    }}
+    callToAction={{
+      target: '_blank',
+      text: t.projects.biolaboratorio.cta,
+      icon: 'tabler:chevron-right',
+      href: 'https://biolaboratorio.up.railway.app',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">{t.projects.biolaboratorio.title}</span>
+      </h3>
+    </Fragment>
+  </Content>
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: lang === 'es' ? 'Descripción:' : 'Description:',
+        description: t.projects.mies.description,
+      },
+      {
+        title: lang === 'es' ? 'Tecnologías:' : 'Tech Stack:',
+        description: t.projects.mies.techStack,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/mies.jpg',
+      alt: 'Tech Design Image',
+      width: 500,
+      height: 300,
+    }}
+    callToAction={{
+      target: '_blank',
+      text: t.projects.mies.cta,
+      icon: 'tabler:chevron-right',
+      href: 'https://github.com/kenluzuriaga0/miesDinapenWeb',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">{t.projects.mies.title}</span>
+      </h3>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: lang === 'es' ? 'Descripción:' : 'Description:',
+        description: t.projects.medical.description,
+      },
+      {
+        title: lang === 'es' ? 'Tecnologías:' : 'Tech Stack:',
+        description: t.projects.medical.techStack,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/medical.png',
+      alt: 'Medical Record Image',
+      height: 290,
+    }}
+    callToAction={{
+      target: '_blank',
+      text: t.projects.medical.cta,
+      icon: 'tabler:chevron-right',
+      href: 'https://github.com/kenluzuriaga0/MedicalRecordCloud',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">{t.projects.medical.title}</span>
+      </h3>
+    </Fragment>
+  </Content>
+
+  <!-- Features3 Widget ************** -->
+  <Features3
+    classes={{ container: 'mt-10' }}
+    title={t.skills.title}
+    subtitle={t.skills.subtitle}
+    columns={4}
+    defaultIcon="tabler:point-filled"
+    items={[
+      {
+        title: 'Java - Spring Boot',
+      },
+      {
+        title: 'Angular',
+      },
+      {
+        title: 'SQL - PostgreSQL',
+      },
+      {
+        title: 'Docker',
+      },
+      {
+        title: 'Python - FastAPI',
+      },
+      {
+        title: 'React',
+      },
+      {
+        title: 'AWS',
+      },
+      {
+        title: 'Odoo ERP',
+      },
+      
+    ]}
+  />
+</Layout>

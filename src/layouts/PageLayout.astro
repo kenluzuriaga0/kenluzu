@@ -3,8 +3,6 @@ import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 
-import { footerData } from '~/navigation';
-
 import type { MetaData } from '~/types';
 
 export interface Props {
@@ -12,6 +10,17 @@ export interface Props {
 }
 
 const { metadata } = Astro.props;
+
+const footerData = {
+  links: [],
+  secondaryLinks: [],
+  socialLinks: [
+    { ariaLabel: 'X', icon: 'tabler:brand-x', href: 'https://x.com/ken_luzuriaga' },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/ken_nlm' },
+    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/kenluzuriaga0' },
+  ],
+  footNote: `Made by Ken Luzuriaga · All rights reserved.`,
+};
 ---
 
 <Layout metadata={metadata}>

@@ -107,7 +107,7 @@ export const translations = {
       tagline: 'Ingeniero de Software',
       viewCV: 'Ver CV',
       subtitle:
-        'Soy un desarrollador enfocado en backend con pasión por el aprendizaje y el crecimiento.',
+        'Soy un desarrollador enfocado en backend con pasión por el aprendizaje y el crecimiento. Disfruto trabajar en equipo y siempre estoy abierto a explorar otras áreas de la informática.',
     },
     blog: {
       title: 'Explora mis artículos aleatorios en mi blog',

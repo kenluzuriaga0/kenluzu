@@ -1,17 +1,39 @@
 ---
+import Image from '~/components/common/Image.astro';
+import { findImage } from '~/utils/images';
+import {
+  getImagesOptimized,
+  astroAsseetsOptimizer,
+} from '~/utils/images-optimization';
+import type { ImageMetadata } from 'astro';
+
 export interface Props {
-  src: string;
+  src: string | ImageMetadata;
   alt: string;
   caption?: string;
 }
 
 const { src, alt, caption } = Astro.props;
 const uniqueId = Math.random().toString(36).substr(2, 9);
+
+// Get the original image for lightbox
+const _image = await findImage(src);
+let fullSizeUrl: string | undefined;
+
+if (_image && typeof _image !== 'string') {
+  // Get a larger version for the lightbox
+  const optimized = await astroAsseetsOptimizer(_image, [1920], 1920, 1080, 'webp');
+  fullSizeUrl = optimized?.[0]?.src;
+} else if (typeof _image === 'string') {
+  fullSizeUrl = _image;
+}
+
+fullSizeUrl = fullSizeUrl || (typeof src === 'string' ? src : '');
 ---
 
 <figure class="expandable-image">
   <a href="#" class="lightbox-trigger" data-lightbox-id={uniqueId}>
-    <img src={src} alt={alt} />
+    <Image src={src} alt={alt} class="lightbox-thumb" />
   </a>
   {caption && <figcaption>{caption}</figcaption>}
 </figure>
@@ -19,7 +41,7 @@ const uniqueId = Math.random().toString(36).substr(2, 9);
 <div id={`lightbox-${uniqueId}`} class="lightbox-overlay">
   <div class="lightbox-container">
     <button class="lightbox-close" data-lightbox-close={uniqueId}>×</button>
-    <img src={src} alt={alt} class="lightbox-img" />
+    <img src={fullSizeUrl} alt={alt} class="lightbox-img" />
   </div>
 </div>
 

@@ -1,0 +1,179 @@
+---
+// Particles Background Component
+// Sutil efecto de partículas con conexiones para el fondo
+---
+
+<canvas id="particles-canvas" class="fixed inset-0 w-full h-full pointer-events-none" style="z-index: 0;"></canvas>
+
+<script is:inline>
+  (function() {
+    // Evitar inicialización múltiple
+    if (window.particlesInitialized) return;
+    window.particlesInitialized = true;
+
+    let canvas = null;
+    let ctx = null;
+    let particles = [];
+    let animationId = null;
+    let isActive = true;
+
+    // Configuración - visibilidad moderada
+    const config = {
+      particleCount: 40,
+      connectionDistance: 130,
+      maxConnections: 4,
+      speed: 0.3,
+      size: { min: 1.5, max: 3 },
+      opacity: { min: 0.2, max: 0.5 },
+    };
+
+    function isDarkMode() {
+      return document.documentElement.classList.contains('dark');
+    }
+
+    function getParticleColor() {
+      return isDarkMode() ? '255, 255, 255' : '100, 116, 139';
+    }
+
+    function resize() {
+      if (!canvas) return;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createParticles() {
+      particles = [];
+      if (!canvas) return;
+      for (let i = 0; i < config.particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * config.speed,
+          vy: (Math.random() - 0.5) * config.speed,
+          size: Math.random() * (config.size.max - config.size.min) + config.size.min,
+          opacity: Math.random() * (config.opacity.max - config.opacity.min) + config.opacity.min,
+        });
+      }
+    }
+
+    function drawParticles() {
+      if (!ctx || !canvas) return;
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      const color = getParticleColor();
+      const isDark = isDarkMode();
+      const opacityMultiplier = isDark ? 1 : 1.5;
+
+      // Dibujar conexiones
+      for (let i = 0; i < particles.length; i++) {
+        let connections = 0;
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < config.connectionDistance && connections < config.maxConnections) {
+            const opacity = (1 - distance / config.connectionDistance) * 0.25 * opacityMultiplier;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(${color}, ${opacity})`;
+            ctx.lineWidth = 0.6;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+            connections++;
+          }
+        }
+      }
+
+      // Dibujar partículas
+      particles.forEach(function(particle) {
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${color}, ${Math.min(particle.opacity * opacityMultiplier, 0.8)})`;
+        ctx.fill();
+      });
+    }
+
+    function updateParticles() {
+      if (!canvas) return;
+      particles.forEach(function(particle) {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+
+        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+
+        particle.x = Math.max(0, Math.min(canvas.width, particle.x));
+        particle.y = Math.max(0, Math.min(canvas.height, particle.y));
+      });
+    }
+
+    function animate() {
+      if (!isActive) return;
+      
+      updateParticles();
+      drawParticles();
+      animationId = requestAnimationFrame(animate);
+    }
+
+    function handleVisibility() {
+      if (document.hidden) {
+        isActive = false;
+        if (animationId) cancelAnimationFrame(animationId);
+      } else {
+        isActive = true;
+        animate();
+      }
+    }
+
+    function init() {
+      // Limpiar animación anterior si existe
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+
+      canvas = document.getElementById('particles-canvas');
+      if (!canvas) return;
+      
+      ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      resize();
+      createParticles();
+      animate();
+    }
+
+    // Inicializar en carga inicial
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+
+    // Event listeners
+    window.addEventListener('resize', function() {
+      resize();
+      createParticles();
+    });
+    
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    // IMPORTANTE: Reinicializar después de View Transitions de Astro
+    document.addEventListener('astro:page-load', function() {
+      init();
+    });
+
+    document.addEventListener('astro:after-swap', function() {
+      init();
+    });
+
+    // Observar cambios de tema
+    const observer = new MutationObserver(function() {
+      // El color se actualizará automáticamente en el próximo frame
+    });
+    
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  })();
+</script>

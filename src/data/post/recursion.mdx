@@ -29,17 +29,17 @@ That's how the conference by David Malan begins. Malan is a Computer Science pro
 
 ### Performance and Complexity
 
-Performance tells you how much slower a program becomes as the input grows. If I have 10 records to process, it takes $x$ time. But if I have 1 million records, will it take 1,000,000 \* $x$ time, or could it be different? This is known as **Big O notation**.
+Performance tells you how much slower a program becomes as the input grows. If I have 10 records to process, it takes _x_ time. But if I have 1 million records, will it take 1,000,000 \* _x_  time, or could it be different? This is known as **Big O notation**.
 
 In the example of counting people in a room, it would be something like this:
 
-- **Option 1** is $O(n)$ (Linear time). It takes as many steps as there are people. If there are 100 participants, this takes 100 steps
-- **Option 2** is $O(n/2)$, still linear but slightly faster.
-- **Option 3** is $O(\log n)$ (Logarithmic time). If there are 100 participants, just takes 7 steps, because the number of people standing reduces by half in each round.
+- **Option 1** is _O(n)_ (Linear time). It takes as many steps as there are people. If there are 100 participants, this takes 100 steps
+- **Option 2** is _O(n/2)_, still linear but slightly faster.
+- **Option 3** is _O(log n)_ (Logarithmic time). If there are 100 participants, just takes 7 steps, because the number of people standing reduces by half in each round.
 
 ### Recursion
 
-What makes option 3 the winning option? ✨ The recursion ✨
+What makes option 3 the winning option? ✨ **The recursion** ✨
 Recursion is when a function calls itself to solve a smaller version of the same problem.
 
 Every recursive function needs a **Base Case** to avoid running forever. Think of it as a 'Divide and Conquer' strategy: break the problem down until it’s simple enough to solve
@@ -69,7 +69,7 @@ factorial(4)
 
 #### The CS50 Auditorium (The Efficiency)
 
-David Malan uses a clever way to count people in a room. Instead of counting 1, 2, 3... ($O(n)$), he uses a **recursive strategy**:
+David Malan uses a clever way to count people in a room. Instead of counting 1, 2, 3... (_O(n)_), he uses a **recursive strategy**:
 
 3. **Stand up** and assign yourself the number 1.
 4. **Pair off** with someone else standing.
@@ -78,14 +78,13 @@ David Malan uses a clever way to count people in a room. Instead of counting 1, 
 
 **Why it works:**
 
-The problem is cut in half in every round. If you have 1,000 people, you only need about 10 rounds to find the total. This is the power of **Logarithmic Time ($O(\log n)$)**.
+The problem is cut in half in every round. If you have 1,000 people, you only need about 10 rounds to find the total. This is the power of **Logarithmic Time (_O(log n)_)**.
 
 import LightboxImage from '~/components/ui/LightboxImage.astro';
 
 <LightboxImage
   src="~/assets/images/blog-3_recursion.png"
-  alt="The Recursive Count: How to Count a Crowd Faster - This infographic illustrates David Malan's recursive counting algorithm used in the CS50 course, showing the step-by-step process of counting participants through recursive pairing."
-  caption="Click to expand"
+  alt="The Recursive Count: How to Count a Crowd Faster."
 />
 
 ### Download a summay in spanish:

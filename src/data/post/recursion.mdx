@@ -44,7 +44,7 @@ Recursion is when a function calls itself to solve a smaller version of the same
 
 Every recursive function needs a **Base Case** to avoid running forever. Think of it as a 'Divide and Conquer' strategy: break the problem down until it’s simple enough to solve
 
-_The Matryoshka Doll (The Logic)_
+**The Matryoshka Doll (The Logic)**
 Think of recursion like a Russian nesting doll. To find out how many dolls are inside, you don't just look at the big one; you follow these rules:
 
 - **The Recursive Step:** Open the current doll. If there is another one inside, repeat the process.
@@ -67,7 +67,7 @@ factorial(4)
 → 24
 ```
 
-#### 2. The CS50 Auditorium (The Efficiency)
+#### The CS50 Auditorium (The Efficiency)
 
 David Malan uses a clever way to count people in a room. Instead of counting 1, 2, 3... ($O(n)$), he uses a **recursive strategy**:
 
@@ -83,8 +83,9 @@ The problem is cut in half in every round. If you have 1,000 people, you only ne
 import LightboxImage from '~/components/ui/LightboxImage.astro';
 
 <LightboxImage
-  src="/src/assets/images/blog-3_recursion.png"
+  src="~/assets/images/blog-3_recursion.png"
   alt="The Recursive Count: How to Count a Crowd Faster - This infographic illustrates David Malan's recursive counting algorithm used in the CS50 course, showing the step-by-step process of counting participants through recursive pairing."
+  caption="Click to expand"
 />
 
 ### Download a summay in spanish:

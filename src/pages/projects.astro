@@ -1,0 +1,148 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import ProjectCard from '~/components/ui/ProjectCard.astro';
+import ProjectModal from '~/components/ui/ProjectModal.astro';
+import { getTranslations } from '~/i18n';
+
+import presentzaImg from '~/assets/images/projects/presentza.png';
+import adnImg from '~/assets/images/projects/adn.png';
+import biolabImg from '~/assets/images/projects/biolaboratorio.png';
+import miesImg from '~/assets/images/projects/mies.jpg';
+import medicalImg from '~/assets/images/projects/medical.png';
+
+const lang = 'en';
+const t = getTranslations(lang);
+
+const metadata = {
+  title: `${t.projects.title} - Ken Luzuriaga`,
+};
+
+const projects = [
+  {
+    id: 'presentza',
+    title: t.projects.presentza.title,
+    shortDescription: 'A mobile-first website for a perfumery to showcase products and streamline customer interactions.',
+    fullDescription: t.projects.presentza.description,
+    techStack: t.projects.presentza.techStack,
+    techTags: ['React 19', 'Vite'],
+    image: presentzaImg,
+    href: 'https://presentza.netlify.app/',
+    cta: t.projects.presentza.cta,
+  },
+  {
+    id: 'adn',
+    title: t.projects.adn.title,
+    shortDescription: 'Web application for generating personalized QR codes for members identification and access control. Includes automated email module.',
+    fullDescription: t.projects.adn.description,
+    techStack: t.projects.adn.techStack,
+    techTags: ['FastAPI', 'React', 'PostgreSQL', 'AWS S3'],
+    image: adnImg,
+    href: 'https://app.asociaciondeportivanaval.com/',
+    cta: t.projects.adn.cta,
+  },
+  {
+    id: 'biolaboratorio',
+    title: t.projects.biolaboratorio.title,
+    shortDescription: 'Full stack freelance project to manage occupational orders and medical records for BioLaboratorio.',
+    fullDescription: t.projects.biolaboratorio.description,
+    techStack: t.projects.biolaboratorio.techStack,
+    techTags: ['Angular 17', 'Spring Boot', 'PostgreSQL', 'AWS S3'],
+    image: biolabImg,
+    href: 'https://biolaboratorio.up.railway.app',
+    cta: t.projects.biolaboratorio.cta,
+  },
+  {
+    id: 'mies',
+    title: t.projects.mies.title,
+    shortDescription: 'Web application for registering information about children intervened on the streets of Ecuador.',
+    fullDescription: t.projects.mies.description,
+    techStack: t.projects.mies.techStack,
+    techTags: ['Angular 14', 'PHP 7', 'MySQL'],
+    image: miesImg,
+    href: 'https://github.com/kenluzuriaga0/miesDinapenWeb',
+    cta: t.projects.mies.cta,
+  },
+  {
+    id: 'medical',
+    title: t.projects.medical.title,
+    shortDescription: 'Application for converting audio to text using AWS services.',
+    fullDescription: t.projects.medical.description,
+    techStack: t.projects.medical.techStack,
+    techTags: ['Angular 14', 'AWS Transcribe', 'AWS S3', 'Lambda'],
+    image: medicalImg,
+    href: 'https://github.com/kenluzuriaga0/MedicalRecordCloud',
+    cta: t.projects.medical.cta,
+  },
+];
+---
+
+<Layout metadata={metadata} lang={lang}>
+  <Fragment slot="header">
+    <Header
+      lang={lang}
+      links={[
+        { text: t.nav.home, href: '/' },
+        { text: t.nav.blog, href: '/blog' },
+        { text: t.nav.about, href: '/#about' },
+        { text: t.nav.resume, href: '/#resume' },
+        { text: t.nav.portfolio, href: '/#portfolio' },
+      ]}
+      actions={[
+        {
+          text: t.nav.hireMe,
+          href: '#',
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+
+  <section class="py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="mb-12">
+        <a 
+          href="/" 
+          class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors mb-4"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Back to Home
+        </a>
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+          {t.projects.title}
+        </h1>
+      </div>
+
+      <!-- Projects Grid - 2 columns on desktop, 1 on mobile -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {projects.map((project) => (
+          <ProjectCard
+            id={project.id}
+            title={project.title}
+            shortDescription={project.shortDescription}
+            image={project.image}
+            imageAlt={project.title}
+            techTags={project.techTags}
+            href={project.href}
+            lang="en"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Modals for each project -->
+  {projects.map((project) => (
+    <ProjectModal
+      id={project.id}
+      title={project.title}
+      description={project.fullDescription}
+      techStack={project.techStack}
+      href={project.href}
+      ctaText={project.cta}
+      lang="en"
+    />
+  ))}
+</Layout>

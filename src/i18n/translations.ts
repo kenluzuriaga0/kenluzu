@@ -50,6 +50,7 @@ export const translations = {
     },
     projects: {
       title: 'Projects',
+      viewAll: 'View all projects',
       presentza: {
         title: 'Presentza Perfumery Website',
         description:
@@ -144,6 +145,7 @@ export const translations = {
     },
     projects: {
       title: 'Proyectos',
+      viewAll: 'Ver todos los proyectos',
       presentza: {
         title: 'Sitio Web Perfumería Presentza',
         description:

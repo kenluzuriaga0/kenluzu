@@ -60,6 +60,7 @@ interface Props {
     };
     projects: {
       title: string;
+      viewAll: string;
       presentza: {
         title: string;
         description: string;
@@ -245,177 +246,131 @@ const metadata = {
 
   <!-- Content Widget **************** -->
 
-  <Content
-    classes={{ container: 'mt-10' }}
-    title={t.projects.title}
-    id="portfolio"
-    isReversed
-    items={[
-      {
-        title: lang === 'es' ? 'Descripción:' : 'Description:',
-        description: t.projects.presentza.description,
-      },
-      {
-        title: lang === 'es' ? 'Tecnologías:' : 'Tech Stack:',
-        description: t.projects.presentza.techStack,
-      },
-    ]}
-    image={{
-      src: '~/assets/images/projects/presentza.png',
-      alt: 'Presentza Image',
-      width: 480,
-      height: 230,
-    }}
-    callToAction={{
-      target: '_blank',
-      text: t.projects.presentza.cta,
-      icon: 'tabler:chevron-right',
-      href: 'https://presentza.netlify.app/',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        <span class="text-2xl">{t.projects.presentza.title}</span>
-      </h3>
-    </Fragment>
-  </Content>
+  <!-- Featured Projects Section **************** -->
 
-  <!-- Content Widget **************** -->
+  <section id="portfolio" class="py-12 lg:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl">{t.projects.title}</h2>
+      </div>
 
-  <Content
-    classes={{ container: 'mt-10' }}
-    isReversed
-    isAfterContent={true}
-    items={[
-      {
-        title: lang === 'es' ? 'Descripción:' : 'Description:',
-        description: t.projects.adn.description,
-      },
-      {
-        title: lang === 'es' ? 'Tecnologías:' : 'Tech Stack:',
-        description: t.projects.adn.techStack,
-      },
-    ]}
-    image={{
-      src: '~/assets/images/projects/adn.png',
-      alt: 'ADN Image',
-      width: 480,
-      height: 230,
-    }}
-    callToAction={{
-      target: '_blank',
-      text: t.projects.adn.cta,
-      icon: 'tabler:chevron-right',
-      href: 'https://app.asociaciondeportivanaval.com/',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        <span class="text-2xl">{t.projects.adn.title}</span>
-      </h3>
-    </Fragment>
-  </Content>
+      <!-- First 3 Projects -->
+      <div class="space-y-16">
+        <!-- Project 1: Presentza -->
+        <Content
+          classes={{ container: 'mt-10' }}
+          isReversed
+          items={[
+            {
+              title: lang === 'es' ? 'Descripción:' : 'Description:',
+              description: t.projects.presentza.description,
+            },
+            {
+              title: lang === 'es' ? 'Tecnologías:' : 'Tech Stack:',
+              description: t.projects.presentza.techStack,
+            },
+          ]}
+          image={{
+            src: '~/assets/images/projects/presentza.png',
+            alt: 'Presentza Image',
+            width: 480,
+            height: 230,
+          }}
+          callToAction={{
+            target: '_blank',
+            text: t.projects.presentza.cta,
+            icon: 'tabler:chevron-right',
+            href: 'https://presentza.netlify.app/',
+          }}
+        >
+          <Fragment slot="content">
+            <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+              <span class="text-2xl">{t.projects.presentza.title}</span>
+            </h3>
+          </Fragment>
+        </Content>
 
-  <!-- Content Widget **************** -->
+        <!-- Project 2: ADN -->
+        <Content
+          classes={{ container: 'mt-10' }}
+          isReversed
+          isAfterContent={true}
+          items={[
+            {
+              title: lang === 'es' ? 'Descripción:' : 'Description:',
+              description: t.projects.adn.description,
+            },
+            {
+              title: lang === 'es' ? 'Tecnologías:' : 'Tech Stack:',
+              description: t.projects.adn.techStack,
+            },
+          ]}
+          image={{
+            src: '~/assets/images/projects/adn.png',
+            alt: 'ADN Image',
+            width: 480,
+            height: 230,
+          }}
+          callToAction={{
+            target: '_blank',
+            text: t.projects.adn.cta,
+            icon: 'tabler:chevron-right',
+            href: 'https://app.asociaciondeportivanaval.com/',
+          }}
+        >
+          <Fragment slot="content">
+            <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+              <span class="text-2xl">{t.projects.adn.title}</span>
+            </h3>
+          </Fragment>
+        </Content>
 
-  <Content
-    isReversed
-    isAfterContent={true}
-    items={[
-      {
-        title: lang === 'es' ? 'Descripción:' : 'Description:',
-        description: t.projects.biolaboratorio.description,
-      },
-      {
-        title: lang === 'es' ? 'Tecnologías:' : 'Tech Stack:',
-        description: t.projects.biolaboratorio.techStack,
-      },
-    ]}
-    image={{
-      src: '~/assets/images/projects/biolaboratorio.png',
-      alt: 'BioLaboratorio Image',
-      height: 230,
-    }}
-    callToAction={{
-      target: '_blank',
-      text: t.projects.biolaboratorio.cta,
-      icon: 'tabler:chevron-right',
-      href: 'https://biolaboratorio.up.railway.app',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        <span class="text-2xl">{t.projects.biolaboratorio.title}</span>
-      </h3>
-    </Fragment>
-  </Content>
+        <!-- Project 3: BioLaboratorio -->
+        <Content
+          isReversed
+          isAfterContent={true}
+          items={[
+            {
+              title: lang === 'es' ? 'Descripción:' : 'Description:',
+              description: t.projects.biolaboratorio.description,
+            },
+            {
+              title: lang === 'es' ? 'Tecnologías:' : 'Tech Stack:',
+              description: t.projects.biolaboratorio.techStack,
+            },
+          ]}
+          image={{
+            src: '~/assets/images/projects/biolaboratorio.png',
+            alt: 'BioLaboratorio Image',
+            height: 230,
+          }}
+          callToAction={{
+            target: '_blank',
+            text: t.projects.biolaboratorio.cta,
+            icon: 'tabler:chevron-right',
+            href: 'https://biolaboratorio.up.railway.app',
+          }}
+        >
+          <Fragment slot="content">
+            <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+              <span class="text-2xl">{t.projects.biolaboratorio.title}</span>
+            </h3>
+          </Fragment>
+        </Content>
+      </div>
 
-  <Content
-    isReversed
-    isAfterContent={true}
-    items={[
-      {
-        title: lang === 'es' ? 'Descripción:' : 'Description:',
-        description: t.projects.mies.description,
-      },
-      {
-        title: lang === 'es' ? 'Tecnologías:' : 'Tech Stack:',
-        description: t.projects.mies.techStack,
-      },
-    ]}
-    image={{
-      src: '~/assets/images/projects/mies.jpg',
-      alt: 'Tech Design Image',
-      width: 500,
-      height: 300,
-    }}
-    callToAction={{
-      target: '_blank',
-      text: t.projects.mies.cta,
-      icon: 'tabler:chevron-right',
-      href: 'https://github.com/kenluzuriaga0/miesDinapenWeb',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        <span class="text-2xl">{t.projects.mies.title}</span>
-      </h3>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent={true}
-    items={[
-      {
-        title: lang === 'es' ? 'Descripción:' : 'Description:',
-        description: t.projects.medical.description,
-      },
-      {
-        title: lang === 'es' ? 'Tecnologías:' : 'Tech Stack:',
-        description: t.projects.medical.techStack,
-      },
-    ]}
-    image={{
-      src: '~/assets/images/projects/medical.png',
-      alt: 'Medical Record Image',
-      height: 290,
-    }}
-    callToAction={{
-      target: '_blank',
-      text: t.projects.medical.cta,
-      icon: 'tabler:chevron-right',
-      href: 'https://github.com/kenluzuriaga0/MedicalRecordCloud',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        <span class="text-2xl">{t.projects.medical.title}</span>
-      </h3>
-    </Fragment>
-  </Content>
+      <!-- View All Button -->
+      <div class="text-center mt-16">
+        <a
+          href={lang === 'es' ? '/es/projects' : '/projects'}
+          class="btn btn-primary inline-flex items-center gap-2"
+        >
+          {t.projects.viewAll}
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- Features3 Widget ************** -->
   <Features3

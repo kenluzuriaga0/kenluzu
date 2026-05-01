@@ -33,7 +33,7 @@ export const translations = {
           company: 'Farmcorp',
           location: 'Samborondón',
           period: 'April/2026 - Present',
-          description1: 'Plannification and development of full stack apps. [React, NodeJS, SQLServer]',
+          description1: 'Planning and development of full stack apps. [React, NodeJS, SQLServer]',
           description2: '',
         },
         trescloud: {

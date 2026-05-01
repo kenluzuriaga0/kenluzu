@@ -40,6 +40,14 @@ interface Props {
     workExperience: {
       title: string;
       jobs: {
+        farmcorp: {
+          title: string;
+          company: string;
+          location: string;
+          period: string;
+          description1: string;
+          description2: string;
+        };
         trescloud: {
           title: string;
           company: string;
@@ -161,11 +169,7 @@ const metadata = {
 
   <!-- Blog Widget **************** -->
 
-  <BlogLatestPosts
-    id="blog"
-    title={t.blog.title}
-    information={t.blog.info}
-  />
+  <BlogLatestPosts id="blog" title={t.blog.title} information={t.blog.info} />
 
   <!-- Content Widget **************** -->
 
@@ -227,15 +231,18 @@ const metadata = {
     title={t.workExperience.title}
     items={[
       {
-        title:
-          `${t.workExperience.jobs.trescloud.title} <br /> <span class="font-normal">${t.workExperience.jobs.trescloud.company},  <small> ${t.workExperience.jobs.trescloud.location}  </small></span> <br /> <span class="text-sm font-normal">${t.workExperience.jobs.trescloud.period}</span>`,
+        title: `${t.workExperience.jobs.farmcorp.title} <br /> <span class="font-normal">${t.workExperience.jobs.farmcorp.company},  <small> ${t.workExperience.jobs.farmcorp.location}  </small></span> <br /> <span class="text-sm font-normal">${t.workExperience.jobs.farmcorp.period}</span>`,
+        description: `📌 ${t.workExperience.jobs.farmcorp.description1} <br />`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title: `${t.workExperience.jobs.trescloud.title} <br /> <span class="font-normal">${t.workExperience.jobs.trescloud.company},  <small> ${t.workExperience.jobs.trescloud.location}  </small></span> <br /> <span class="text-sm font-normal">${t.workExperience.jobs.trescloud.period}</span>`,
         description: `📌 ${t.workExperience.jobs.trescloud.description1} <br />
         📌 ${t.workExperience.jobs.trescloud.description2}`,
         icon: 'tabler:briefcase',
       },
       {
-        title:
-          `${t.workExperience.jobs.medilink.title} <br /> <span class="font-normal">${t.workExperience.jobs.medilink.company}, <small> ${t.workExperience.jobs.medilink.location} </small></span> <br /> <span class="text-sm font-normal">${t.workExperience.jobs.medilink.period}</span>`,
+        title: `${t.workExperience.jobs.medilink.title} <br /> <span class="font-normal">${t.workExperience.jobs.medilink.company}, <small> ${t.workExperience.jobs.medilink.location} </small></span> <br /> <span class="text-sm font-normal">${t.workExperience.jobs.medilink.period}</span>`,
         description: `📌 ${t.workExperience.jobs.medilink.description1} <br />
         📌 ${t.workExperience.jobs.medilink.description2}`,
         icon: 'tabler:briefcase',
@@ -361,12 +368,19 @@ const metadata = {
 
       <!-- View All Button -->
       <div class="text-center mt-16">
-        <a
-          href={lang === 'es' ? '/es/projects' : '/projects'}
-          class="btn btn-primary inline-flex items-center gap-2"
-        >
+        <a href={lang === 'es' ? '/es/projects' : '/projects'} class="btn btn-primary inline-flex items-center gap-2">
           {t.projects.viewAll}
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+          >
         </a>
       </div>
     </div>
@@ -384,7 +398,7 @@ const metadata = {
         title: 'Java - Spring Boot',
       },
       {
-        title: 'Angular',
+        title: 'Angular / React',
       },
       {
         title: 'SQL - PostgreSQL',
@@ -396,7 +410,7 @@ const metadata = {
         title: 'Python - FastAPI',
       },
       {
-        title: 'React',
+        title: 'AI-Tools',
       },
       {
         title: 'AWS',
@@ -404,7 +418,6 @@ const metadata = {
       {
         title: 'Odoo ERP',
       },
-      
     ]}
   />
 </Layout>

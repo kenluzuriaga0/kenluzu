@@ -28,11 +28,19 @@ export const translations = {
     workExperience: {
       title: 'Work experience',
       jobs: {
+        farmcorp: {
+          title: 'Application Arquitech',
+          company: 'Farmcorp',
+          location: 'Samborondón',
+          period: 'April/2026 - Present',
+          description1: 'Plannification and development of full stack apps. [React, NodeJS, SQLServer]',
+          description2: '',
+        },
         trescloud: {
           title: 'Software Developer',
           company: 'Trescloud LTDA',
           location: 'Quito',
-          period: 'Ago/2022 - Present',
+          period: 'Ago/2022 - April/2026',
           description1:
             'Customized various Odoo ERP modules for clients and contributed to the official Ecuadorian localization. [Python, Odoo Framework, SQL]',
           description2:
@@ -123,11 +131,19 @@ export const translations = {
     workExperience: {
       title: 'Experiencia laboral',
       jobs: {
+        farmcorp: {
+          title: 'Arquitecto de aplicaciones',
+          company: 'Farmcorp',
+          location: 'Samborondón',
+          period: 'Abril/2026 - Presente',
+          description1: 'Planificación y desarrollo de aplicaciones Full Stack. [React, NodeJS, SQLserver]',
+          description2: '',
+        },
         trescloud: {
           title: 'Desarrollador de Software',
           company: 'Trescloud LTDA',
           location: 'Quito',
-          period: 'Ago/2022 - Presente',
+          period: 'Ago/2022 - Abril/2026',
           description1:
             'Personalicé varios módulos del ERP Odoo para clientes y contribuí a la localización oficial ecuatoriana. [Python, Odoo Framework, SQL]',
           description2:

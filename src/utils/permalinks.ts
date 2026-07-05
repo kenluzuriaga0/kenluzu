@@ -87,6 +87,10 @@ export const getPermalink = (slug = '', type = 'page'): string => {
 };
 
 /** */
+export const getPostPermalink = (post: { lang?: string; permalink: string }): string =>
+  getPermalink(post.lang === 'es' ? `es/${post.permalink}` : post.permalink, 'post');
+
+/** */
 export const getHomePermalink = (): string => getPermalink('/');
 
 /** */

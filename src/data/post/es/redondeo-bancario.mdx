@@ -1,0 +1,47 @@
+---
+publishDate: 2024-12-08T00:00:00Z
+title: Redondeo Bancario
+excerpt: Cómo ser más preciso con los decimales
+image: ~/assets/images/blog-1_portrait.png
+category: coding
+tags:
+  - python
+  - matemáticas
+lang: es
+translationSlug: bankers-rounding
+metadata:
+  canonical: https://kenluzuriaga.com/es/redondeo-bancario
+---
+
+Es un método de redondeo que consiste en lo siguiente: si el dígito anterior al número que se va a redondear es mayor a 5, se redondea hacia arriba, y si es menor a 5, se redondea hacia abajo. Hasta aquí es simple. **Lo interesante ocurre cuando el número a redondear es exactamente 5**. En ese caso, depende de si el dígito anterior al 5 es **par o impar**.
+Si es par, se redondea hacia abajo
+Si es impar, se redondea hacia arriba
+
+O en otras palabras,
+Se redondea al número par más cercano al dígito anterior al 5
+
+En la siguiente tabla puedes ver la eficacia del redondeo bancario
+
+|              | **Redondeo Estándar** |               | **Redondeo Bancario** |               |
+| ------------ | :--------------------: | ------------- | :--------------------: | ------------: |
+| **Interés**  |      **Resultado**     | **Desviación**|      **Resultado**     | **Desviación**|
+| 0.005        |         0.01           | 0.005         |           0            |        -0.005 |
+| 0.015        |         0.02           | 0.005         |         0.02           |         0.005 |
+| 0.025        |         0.03           | 0.005         |         0.02           |        -0.005 |
+| 0.035        |         0.04           | 0.005         |         0.04           |         0.005 |
+| 0.045        |         0.05           | 0.005         |         0.04           |        -0.005 |
+|              |                         |               |                         |               |
+| **0.125**    |       **0.15**         | **0.025**     |       **0.12**         |     **0.005** |
+
+Descubrí esto porque vi la publicación de un hilo que planteaba una pregunta sobre programación. La pregunta era:
+
+**¿Por qué sucede esto?**
+
+```python
+>>> print(round(6.045))
+6.04
+>>> print(round(6.035))
+6.04
+```
+
+Ahora ya sabes por qué. Es porque el método de redondeo por defecto en Python es el redondeo bancario.

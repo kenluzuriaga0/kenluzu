@@ -55,9 +55,15 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     author,
     draft = false,
     metadata = {},
+    lang = 'en',
+    translationSlug,
   } = data;
 
-  const slug = cleanSlug(id); // cleanSlug(rawSlug.split('/').pop());
+  const idSegments = id.split('/');
+  const slug = cleanSlug(idSegments[idSegments.length - 1]);
+  const langFromFolder = idSegments.length > 1 ? idSegments[0] : undefined;
+  const postLang = langFromFolder === 'es' || langFromFolder === 'en' ? langFromFolder : lang;
+
   const publishDate = new Date(rawPublishDate);
   const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
 
@@ -92,6 +98,9 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     draft: draft,
 
     metadata,
+
+    lang: postLang,
+    translationSlug,
 
     Content: Content,
     // or 'content' in case you consume from API
@@ -166,17 +175,24 @@ export const findPostsByIds = async (ids: Array<string>): Promise<Array<Post>> =
 };
 
 /** */
-export const findLatestPosts = async ({ count }: { count?: number }): Promise<Array<Post>> => {
+export const findLatestPosts = async ({ count, lang }: { count?: number; lang?: 'en' | 'es' }): Promise<Array<Post>> => {
   const _count = count || 4;
-  const posts = await fetchPosts();
+  const posts = lang ? (await fetchPosts()).filter((p) => p.lang === lang) : await fetchPosts();
 
   return posts ? posts.slice(0, _count) : [];
 };
 
 /** */
-export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateFunction }) => {
+export const getStaticPathsBlogList = async ({
+  paginate,
+  lang,
+}: {
+  paginate: PaginateFunction;
+  lang?: 'en' | 'es';
+}) => {
   if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
-  return paginate(await fetchPosts(), {
+  const posts = lang ? (await fetchPosts()).filter((p) => p.lang === lang) : await fetchPosts();
+  return paginate(posts, {
     params: { blog: BLOG_BASE || undefined },
     pageSize: blogPostsPerPage,
   });
@@ -187,17 +203,24 @@ export const getStaticPathsBlogPost = async () => {
   if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
   return (await fetchPosts()).flatMap((post) => ({
     params: {
-      blog: post.permalink,
+      blog: post.lang === 'es' ? `es/${post.permalink}` : post.permalink,
     },
     props: { post },
   }));
 };
 
 /** */
+export const findTranslationPost = async (post: Post): Promise<Post | undefined> => {
+  if (!post.translationSlug) return undefined;
+  const posts = await fetchPosts();
+  return posts.find((p) => p.slug === post.translationSlug);
+};
+
+/** */
 export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: PaginateFunction }) => {
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
-  const posts = await fetchPosts();
+  const posts = (await fetchPosts()).filter((post) => post.lang === 'en');
   const categories = {};
   posts.map((post) => {
     if (post.category?.slug) {
@@ -221,7 +244,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
 export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFunction }) => {
   if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
 
-  const posts = await fetchPosts();
+  const posts = (await fetchPosts()).filter((post) => post.lang === 'en');
   const tags = {};
   posts.map((post) => {
     if (Array.isArray(post.tags)) {
@@ -250,6 +273,7 @@ export async function getRelatedPosts(originalPost: Post, maxResults: number = 4
 
   const postsWithScores = allPosts.reduce((acc: { post: Post; score: number }[], iteratedPost: Post) => {
     if (iteratedPost.slug === originalPost.slug) return acc;
+    if (iteratedPost.lang !== originalPost.lang) return acc;
 
     let score = 0;
     if (iteratedPost.category && originalPost.category && iteratedPost.category.slug === originalPost.category.slug) {

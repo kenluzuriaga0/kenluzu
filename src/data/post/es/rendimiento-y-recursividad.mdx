@@ -1,0 +1,98 @@
+---
+publishDate: 2026-03-28T00:00:00Z
+title: Rendimiento y Recursividad
+excerpt: Resolviendo problemas de la forma más inteligente
+image: ~/assets/images/blog-3_portrait.png
+category: coding
+tags:
+  - python
+  - matemáticas
+  - algoritmo
+lang: es
+translationSlug: recursion
+metadata:
+  canonical: https://kenluzuriaga.com/es/rendimiento-y-recursividad
+---
+
+¿Cómo puedes contar a todos los participantes de un auditorio si no tienes sensores, procesos de registro o control de acceso?
+
+- **Opción 1:** Usar mis ojos y mi mente para contarlos uno por uno: 1, 2, 3, 4...
+- **Opción 2:** Contar de dos en dos, como 2, 4, 6, 8...
+- **Opción 3:** Pedir a los participantes que sigan estas instrucciones:
+  1.  Ponerse de pie y pensar en el número 1
+  2.  Emparejarse con alguien que esté de pie, sumar su número al tuyo y recordar la suma
+  3.  Uno de los dos debe sentarse
+  4.  Si sigues de pie, vuelve al paso 2.
+      La última persona en pie sabrá el número exacto de participantes.
+
+La opción 3 es la más eficiente y rápida en comparación con los otros métodos. Por eso los algoritmos son importantes.
+
+Así comienza la conferencia de David Malan. Malan es profesor de Ciencias de la Computación en la Universidad de Harvard, y enseña cómo las distintas formas de resolver un problema pueden llevar al desastre o simplemente convertirse en un pequeño obstáculo cotidiano.
+
+### Rendimiento y complejidad
+
+El rendimiento indica cuánto más lento se vuelve un programa a medida que crece la entrada de datos. Si tengo 10 registros que procesar, toma un tiempo _x_. Pero si tengo 1 millón de registros, ¿tomará 1,000,000 \* _x_ de tiempo, o podría ser diferente? Esto se conoce como **notación Big O**.
+
+En el ejemplo de contar personas en una sala, sería algo así:
+
+- **Opción 1** es _O(n)_ (tiempo lineal). Toma tantos pasos como personas haya. Si hay 100 participantes, esto toma 100 pasos
+- **Opción 2** es _O(n/2)_, sigue siendo lineal pero un poco más rápida.
+- **Opción 3** es _O(log n)_ (tiempo logarítmico). Si hay 100 participantes, solo toma 7 pasos, porque el número de personas de pie se reduce a la mitad en cada ronda.
+
+### Recursividad
+
+¿Qué hace que la opción 3 sea la ganadora? ✨ **La recursividad** ✨
+La recursividad ocurre cuando una función se llama a sí misma para resolver una versión más pequeña del mismo problema.
+
+Toda función recursiva necesita un **caso base** para evitar ejecutarse eternamente. Piénsalo como una estrategia de 'Divide y Vencerás': divide el problema hasta que sea lo bastante simple para resolverlo
+
+**La muñeca Matryoshka (La lógica)**
+Piensa en la recursividad como una muñeca rusa. Para saber cuántas muñecas hay dentro, no basta con mirar la más grande; sigues estas reglas:
+
+- **El paso recursivo:** Abre la muñeca actual. Si hay otra dentro, repite el proceso.
+- **El caso base:** Eventualmente llegas a la muñeca más pequeña, que no se puede abrir. Ahí es donde te detienes y empiezas a contar hacia atrás.
+
+```python
+def factorial(n):
+    if n == 0:
+        return 1  # base case
+    return n * factorial(n - 1)  # recursive case
+```
+
+```python
+factorial(4)
+→ 4 * factorial(3)
+→ 4 * 3 * factorial(2)
+→ 4 * 3 * 2 * factorial(1)
+→ 4 * 3 * 2 * 1 * factorial(0)
+→ 4 * 3 * 2 * 1 * 1
+→ 24
+```
+
+#### El auditorio de CS50 (La eficiencia)
+
+David Malan usa una forma ingeniosa de contar personas en una sala. En lugar de contar 1, 2, 3... (_O(n)_), utiliza una **estrategia recursiva**:
+
+3. **Ponte de pie** y asígnate el número 1.
+4. **Empareja** con otra persona que esté de pie.
+5. **Suma** tus números y una persona se sienta.
+6. **Repite** hasta que quede solo una persona de pie.
+
+**Por qué funciona:**
+
+El problema se reduce a la mitad en cada ronda. Si tienes 1,000 personas, solo necesitas unas 10 rondas para encontrar el total. Este es el poder del **Tiempo Logarítmico (_O(log n)_)**.
+
+import LightboxImage from '~/components/ui/LightboxImage.astro';
+
+<LightboxImage
+  src="~/assets/images/blog-3_recursion.png"
+  alt="El conteo recursivo: cómo contar una multitud más rápido."
+/>
+
+### Descarga el resumen (PDF):
+
+[Recursion_Blueprint.pdf](https://drive.google.com/file/d/1P24x1MLHxKQtc8raQBTimKkMEbmARdMm/view?usp=sharing)
+
+### Referencias
+
+[CS50x 2026 - Clase 3 - Algoritmos](https://www.youtube.com/watch?v=6Svu_ae5ebk)

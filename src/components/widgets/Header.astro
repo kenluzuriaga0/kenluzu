@@ -32,6 +32,7 @@ export interface Props {
   showRssFeed?: boolean;
   position?: string;
   lang?: Language;
+  alternateUrl?: string;
 }
 
 const {
@@ -45,10 +46,11 @@ const {
   showRssFeed = false,
   position = 'center',
   lang = 'en',
+  alternateUrl: alternateUrlProp,
 } = Astro.props;
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
-const alternateUrl = getAlternateLanguageUrl(currentPath);
+const alternateUrl = alternateUrlProp ?? getAlternateLanguageUrl(currentPath);
 const currentLangLabel = getLanguageLabel(lang);
 const alternateLangLabel = getLanguageLabel(lang === 'en' ? 'es' : 'en');
 ---

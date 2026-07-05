@@ -18,6 +18,7 @@ export const translations = {
     blog: {
       title: 'Explore my random articles on my blog',
       info: "I will try writing about what I learn or what gives me an 'Oh wow!' moment",
+      viewAll: 'View all posts',
     },
     about: {
       title: 'About me',
@@ -29,10 +30,10 @@ export const translations = {
       title: 'Work experience',
       jobs: {
         farmcorp: {
-          title: 'Application Arquitech',
+          title: 'Application Arquitect',
           company: 'Farmcorp',
           location: 'Samborondón',
-          period: 'April/2026 - Present',
+          period: 'May/2026 - Present',
           description1: 'Planning and development of full stack apps. [React, NodeJS, SQLServer]',
           description2: '',
         },
@@ -121,6 +122,7 @@ export const translations = {
     blog: {
       title: 'Explora mis artículos aleatorios en mi blog',
       info: 'Intentaré escribir sobre lo que aprendo o lo que me dé un momento de "¡Oh, Wow!"',
+      viewAll: 'Ver todos los posts',
     },
     about: {
       title: 'Sobre mí',
@@ -135,7 +137,7 @@ export const translations = {
           title: 'Arquitecto de aplicaciones',
           company: 'Farmcorp',
           location: 'Samborondón',
-          period: 'Abril/2026 - Presente',
+          period: 'Mayo/2026 - Presente',
           description1: 'Planificación y desarrollo de aplicaciones Full Stack. [React, NodeJS, SQLserver]',
           description2: '',
         },

@@ -37,6 +37,10 @@ export interface Post {
   draft?: boolean;
 
   /**  */
+  lang?: 'en' | 'es';
+  translationSlug?: string;
+
+  /**  */
   Content?: AstroComponentFactory;
   content?: string;
 
@@ -61,6 +65,12 @@ export interface MetaData {
 
   openGraph?: MetaDataOpenGraph;
   twitter?: MetaDataTwitter;
+  languageAlternates?: MetaDataLanguageAlternate[];
+}
+
+export interface MetaDataLanguageAlternate {
+  hreflang: string;
+  href: string;
 }
 
 export interface MetaDataRobots {

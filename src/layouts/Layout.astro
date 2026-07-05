@@ -17,23 +17,45 @@ import Particles from '~/components/ui/Particles.astro';
 import { ClientRouter } from 'astro:transitions';
 
 import type { MetaData as MetaDataType } from '~/types';
+import type { Language } from '~/i18n';
+import { getCanonical } from '~/utils/permalinks';
 
 export interface Props {
   metadata?: MetaDataType;
+  lang?: Language;
+  alternateUrl?: string;
+  hasAlternate?: boolean;
 }
 
-const { metadata = {} } = Astro.props;
-const { language, textDirection } = I18N;
+const { metadata = {}, lang, alternateUrl, hasAlternate = true } = Astro.props;
+const { textDirection } = I18N;
+
+const currentLang: Language = lang ?? (Astro.url.pathname.startsWith('/es') ? 'es' : 'en');
+const otherLang: Language = currentLang === 'en' ? 'es' : 'en';
+
+const languageAlternates =
+  hasAlternate && alternateUrl
+    ? [
+        { hreflang: currentLang, href: String(getCanonical(Astro.url.pathname)) },
+        { hreflang: otherLang, href: String(getCanonical(alternateUrl)) },
+        {
+          hreflang: 'x-default',
+          href: String(getCanonical(currentLang === 'en' ? Astro.url.pathname : alternateUrl)),
+        },
+      ]
+    : undefined;
+
+const pageMetadata: MetaDataType = { ...metadata, languageAlternates: metadata.languageAlternates ?? languageAlternates };
 ---
 
 <!doctype html>
-<html lang={language} dir={textDirection} class="2xl:text-[20px]">
+<html lang={currentLang} dir={textDirection} class="2xl:text-[20px]">
   <head>
     <CommonMeta />
     <Favicons />
     <CustomStyles />
     <ApplyColorMode />
-    <Metadata {...metadata} />
+    <Metadata {...pageMetadata} />
     <SiteVerification />
     <Analytics />
 

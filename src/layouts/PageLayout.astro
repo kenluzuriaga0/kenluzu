@@ -10,13 +10,15 @@ import { getTranslations, getAlternateLanguageUrl } from '~/i18n';
 export interface Props {
   metadata?: MetaData;
   lang?: Language;
+  alternateUrl?: string;
+  hasAlternate?: boolean;
 }
 
-const { metadata, lang = 'en' } = Astro.props;
+const { metadata, lang = 'en', alternateUrl: alternateUrlProp, hasAlternate = true } = Astro.props;
 
 const t = getTranslations(lang);
 const currentPath = Astro.url.pathname;
-const alternateUrl = getAlternateLanguageUrl(currentPath);
+const alternateUrl = alternateUrlProp ?? getAlternateLanguageUrl(currentPath);
 
 const footerData = {
   links: [],
@@ -30,16 +32,17 @@ const footerData = {
 };
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} lang={lang} alternateUrl={alternateUrl} hasAlternate={hasAlternate}>
   <slot name="header">
     <Header
       lang={lang}
+      alternateUrl={alternateUrl}
       links={[
         { text: t.nav.home, href: lang === 'en' ? '/' : '/es' },
         { text: t.nav.blog, href: lang === 'en' ? '/blog' : '/es/blog' },
-        { text: t.nav.about, href: lang === 'en' ? '/#about' : '/es/#about' },
-        { text: t.nav.resume, href: lang === 'en' ? '/#resume' : '/es/#resume' },
-        { text: t.nav.portfolio, href: lang === 'en' ? '/#portfolio' : '/es/#portfolio' },
+        { text: t.nav.about, href: lang === 'en' ? '/#about' : '/es#about' },
+        { text: t.nav.resume, href: lang === 'en' ? '/#resume' : '/es#resume' },
+        { text: t.nav.portfolio, href: lang === 'en' ? '/#portfolio' : '/es#portfolio' },
       ]}
       actions={[
         {

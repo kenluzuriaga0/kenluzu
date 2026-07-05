@@ -1,0 +1,129 @@
+---
+publishDate: 2026-07-04T00:00:00Z
+title: Financial Privacy with Actual Budget
+excerpt: Discover Actual Budget, a free, self-hosted, and local-first personal finance app.
+image: ~/assets/images/blog-4_portrait.png
+category: finance
+tags:
+  - finance
+  - open-source
+lang: en
+translationSlug: privacidad-financiera-con-actual-budget
+metadata:
+  canonical: https://kenluzuriaga.com/financial-privacy-with-actual-budget
+---
+
+import LightboxImage from '~/components/ui/LightboxImage.astro';
+
+What matters most for success in managing your personal finances: the tool or the habit?
+
+While the vast of the digital world offers countless tools such as YNAB, Money Manager, complex Excel templates, or even a WhatsApp chat with yourself, we must remember something fundamental: any tool becomes completely useless without data.
+
+Therefore, the secret to maintaining a thorough and successful record lies entirely in the habit. Consistency in tracking every single expense and income carries far more weight than using the fanciest app on the market packed with indicators, projections, and statistical dashboards. After all, what good is an excellent platform if it doesn't reflect 100% real data?
+
+That is why my primary recommendation is to develop the discipline of writing down every transaction, even if it's in an old-fashioned notebook. By doing this, you will forge the routine of sitting down every night (or the following day) to process what you have spent.
+
+With that clear, I want to recommend a completely free and highly popular software within the open source community. A personal finance system that was, in fact, the main topic of my presentation at the Latin American Free Software Installation Festival (FLISOL) 2026 in Guayaquil.
+
+<LightboxImage
+  src="~/assets/images/blog-4_expo.jpg"
+  alt="Ken presenting at FLISOL 2026 in Guayaquil"
+  caption="Me at FLISOL 2026 in Guayaquil"
+/>
+*This is me. I have been using Actual Budget since June 2024, and it has been an absolute game-changer.*
+
+## Two Non-Negotiable Requirements for a Financial App
+
+In my opinion, there are two main features that determine whether a financial management system actually works in day-to-day life:
+
+### 1. Seamless Transaction Entry
+
+This connects directly to my previous point: consistency. If the system's interface is cluttered with mandatory fields and makes the simple act of logging data feel overwhelming, you will eventually abandon it. There shouldn't be any friction stopping you from documenting your daily expenses. It needs to be a smooth process.
+
+{/* TODO: Add image — blog-4_transaction.png — Quick transaction entry interface in Actual Budget */}
+
+### 2. A Highly Customizable Dashboard
+
+I need to know my current financial health at a single glance (basically: _how screwed I am, or not_). It is incredibly satisfying to look at a statistical panel that shows you how much money you have, how close you are to reaching a goal, how you compare to the previous month, and what your current cash flow looks like—all through easily configurable indicators.
+
+{/* TODO: Add image — blog-4_dashboard.png — Actual Budget's customized dashboard with charts */}
+
+Everything else adds value and is a great bonus, but these two requirements are absolutely vital for me.
+
+## What do 'Local-First' and 'Self-Hosted' mean?
+
+This is exactly where Actual Budget truly shines. It is a local-first web application. What does this mean? It prioritizes working without an internet connection. Your data is always saved locally on your machine, and the app will transparently sync everything as soon as you are back online.
+
+In addition to being local-first, it is self-hosted. This is a massive win for data privacy: you have absolute control over your information.
+
+You can run the system locally using a Docker image or deploy it to a cloud server. For the latter, I highly recommend platforms like **Railway** or **Pikapods**, as they allow you to launch your own instance of Actual Budget with minimal effort.
+
+{/* TODO: Add image — blog-4_deployment.png — Screenshot of a quick deployment on Railway/Pikapods */}
+
+## The Financial Philosophy Behind the Software
+
+Once you set up your access with a password, the system will prompt you to create your budget file (you can manage multiple independent files under the same account). You will find a ton of options, but before you dive in, let me briefly explain the philosophy this software is built upon:
+
+### 1. Give Every Dollar a Job (Zero-Based Budgeting)
+
+This is the core principle of _Zero-Based Budgeting_. The idea is very simple: every dollar you earn must have an assigned purpose **before** you spend it. The ultimate goal is to bring your monthly budget balance down to zero. Mind you, this doesn't mean emptying your bank account or spending irresponsibly; it means allocating 100% of your income into different categories.
+
+If you receive $1,000 this month, the first thing you do is allocate it entirely: a certain amount for groceries, another for transport, gas, a planned night out, savings, or an investment fund, until the "available to budget" balance is exactly zero.
+
+By giving your money a specific job, you stay in control. If an unexpected event happens mid-month, you can easily shift things around: _"Okay, this emergency came up, so I'm moving some money out of my Entertainment or Savings category to cover it."_
+
+You can even use it to plan future purchases. In Actual, you can create a category called "New Laptop" and assign $100 to it every month. This simulates a deferred payment or buying in installments, but with a major advantage: you are visually saving the money _before_ buying the product, without getting into credit card debt.
+
+### 2. Pay Yourself First
+
+This concept flips the traditional order of personal finance. It is not about _"saving whatever is left over at the end of the month,"_ but rather _"spending what is left over after you have already set aside your savings."_
+
+This method truly works when you automate it. Inside Actual, you can use **"Schedules"**, which are automatic entries executed on the specific dates you set. This helps you maintain consistency when paired with automatic transfers from your bank account.
+
+## A Walkthrough of the Actual Budget Interface
+
+With that crash course in personal finance out of the way, let's look at how the budget actually looks inside the application.
+
+Here is an example of how I structure my categories:
+Este es un ejemplo de cómo estructuro mis categorías:
+<LightboxImage
+  src="~/assets/images/blog-4_ui.png"
+  alt="UI de Actual Budget"
+/>
+- **First column:** The categories themselves (Food, Utilities, Transport, etc.).
+- **Second column (Budgeted):** The money allocated at the beginning of the month.
+- **Third column (Spent):** The actual money deducted automatically as we log transactions.
+- **Fourth column (Balance):** The visual indicator showing whether we are on track or hitting the limit for that category.
+
+To get an excellent baseline on how to map out your first categories, I recommend looking up [budget templates from YNAB](https://www.ynab.com/templates) and replicating that exact structure inside Actual.
+
+## Beyond Budgeting: Key Features
+
+While zero-based budgeting is the core of the application, Actual Budget comes packed with all the features of a modern financial platform:
+
+- **Account Management:** Full control over your accounts, whether they are in or out of the budget.
+- **Payee Management:** Easily manage where or to whom you paid.
+- **Automation Rules:** Set up custom rules so that if an expense comes from a specific payee, it gets categorized automatically.
+- **Schedules:** Reminders and automatic entries for recurring transactions.
+- **Tags:** For quick filtering and searching.
+- **Integrated Dashboards:** Analytical visualization of your data.
+
+If you want to dig deeper into everything it offers, you can check out the [official Actual Budget documentation](https://actualbudget.org/docs/).
+
+## How It Works Under the Hood (For the Techies)
+
+The application is built using modern web technologies: it uses **React** on the client side and a **Node.js** server that primarily functions as a synchronizer.
+
+Its security relies on the fact that your records are synchronized using **End-to-End Encryption (E2EE)**.
+
+When you log into your Actual instance for the first time using your password, you record your income and expenses normally. If you log in from a different device the next day (like your phone or another laptop), Actual will prompt you for your password, download the **SQLite** file from the server—which is essentially a collection of logs with logical timestamps—and your web browser will decrypt it locally. **The server never sees your financial data in plain text.**
+
+<LightboxImage
+  src="~/assets/images/blog-4_arquitect.png"
+  alt="Actual Budget architecture"
+  caption="Actual Budget architecture"
+/>
+
+### How Does It Handle Data Conflicts?
+
+Actual utilizes the **"Last-Write-Wins" (LWW)** principle. Because the entire file runs directly in your browser's memory, you have the freedom to open the app and keep editing your transactions completely offline. As soon as your device detects an internet connection, it pushes the changes and resolves the synchronization seamlessly. That is what true local-first development is all about.

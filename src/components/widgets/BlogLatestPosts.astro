@@ -15,14 +15,16 @@ export interface Props extends Widget {
   linkUrl?: string | URL;
   information?: string;
   count?: number;
+  lang?: 'en' | 'es';
 }
 
 const {
   title = await Astro.slots.render('title'),
   linkText = 'View all posts',
-  linkUrl = getBlogPermalink(),
+  linkUrl: linkUrlProp,
   information = await Astro.slots.render('information'),
   count = 4,
+  lang,
 
   id,
   isDark = false,
@@ -30,7 +32,9 @@ const {
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
 
-const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
+const linkUrl = linkUrlProp ?? (lang === 'es' ? `/es${getBlogPermalink()}` : getBlogPermalink());
+
+const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count, lang }) : [];
 ---
 
 {

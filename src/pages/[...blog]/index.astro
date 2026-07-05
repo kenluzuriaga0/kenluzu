@@ -7,8 +7,8 @@ import Layout from '~/layouts/PageLayout.astro';
 import SinglePost from '~/components/blog/SinglePost.astro';
 import ToBlogLink from '~/components/blog/ToBlogLink.astro';
 
-import { getCanonical, getPermalink } from '~/utils/permalinks';
-import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
+import { getCanonical, getPostPermalink } from '~/utils/permalinks';
+import { getStaticPathsBlogPost, blogPostRobots, findTranslationPost } from '~/utils/blog';
 import { findImage } from '~/utils/images';
 import type { MetaData } from '~/types';
 import RelatedPosts from '~/components/blog/RelatedPosts.astro';
@@ -27,7 +27,11 @@ const { post } = Astro.props as Props;
 const currentPath = Astro.url.pathname;
 const lang: Language = currentPath.startsWith('/es') ? 'es' : 'en';
 
-const url = getCanonical(getPermalink(post.permalink, 'post'));
+const url = getCanonical(getPostPermalink(post));
+
+const translationPost = await findTranslationPost(post);
+const alternateUrl = translationPost ? getPostPermalink(translationPost) : getPostPermalink(post);
+
 const image = (await findImage(post.image)) as ImageMetadata | string | undefined;
 
 const metadata = merge(
@@ -49,7 +53,7 @@ const metadata = merge(
 ) as MetaData;
 ---
 
-<Layout metadata={metadata} lang={lang}>
+<Layout metadata={metadata} lang={lang} alternateUrl={alternateUrl} hasAlternate={!!translationPost}>
   <SinglePost post={{ ...post, image: image }} url={url}>
     {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
   </SinglePost>

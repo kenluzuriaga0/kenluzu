@@ -175,7 +175,13 @@ export const findPostsByIds = async (ids: Array<string>): Promise<Array<Post>> =
 };
 
 /** */
-export const findLatestPosts = async ({ count, lang }: { count?: number; lang?: 'en' | 'es' }): Promise<Array<Post>> => {
+export const findLatestPosts = async ({
+  count,
+  lang,
+}: {
+  count?: number;
+  lang?: 'en' | 'es';
+}): Promise<Array<Post>> => {
   const _count = count || 4;
   const posts = lang ? (await fetchPosts()).filter((p) => p.lang === lang) : await fetchPosts();
 

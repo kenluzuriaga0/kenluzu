@@ -45,7 +45,10 @@ const languageAlternates =
       ]
     : undefined;
 
-const pageMetadata: MetaDataType = { ...metadata, languageAlternates: metadata.languageAlternates ?? languageAlternates };
+const pageMetadata: MetaDataType = {
+  ...metadata,
+  languageAlternates: metadata.languageAlternates ?? languageAlternates,
+};
 ---
 
 <!doctype html>

@@ -6,7 +6,7 @@
 <canvas id="particles-canvas" class="fixed inset-0 w-full h-full pointer-events-none" style="z-index: 0;"></canvas>
 
 <script is:inline>
-  (function() {
+  (function () {
     // Evitar inicialización múltiple
     if (window.particlesInitialized) return;
     window.particlesInitialized = true;
@@ -58,9 +58,9 @@
 
     function drawParticles() {
       if (!ctx || !canvas) return;
-      
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       const color = getParticleColor();
       const isDark = isDarkMode();
       const opacityMultiplier = isDark ? 1 : 1.5;
@@ -87,7 +87,7 @@
       }
 
       // Dibujar partículas
-      particles.forEach(function(particle) {
+      particles.forEach(function (particle) {
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${color}, ${Math.min(particle.opacity * opacityMultiplier, 0.8)})`;
@@ -97,7 +97,7 @@
 
     function updateParticles() {
       if (!canvas) return;
-      particles.forEach(function(particle) {
+      particles.forEach(function (particle) {
         particle.x += particle.vx;
         particle.y += particle.vy;
 
@@ -111,7 +111,7 @@
 
     function animate() {
       if (!isActive) return;
-      
+
       updateParticles();
       drawParticles();
       animationId = requestAnimationFrame(animate);
@@ -136,7 +136,7 @@
 
       canvas = document.getElementById('particles-canvas');
       if (!canvas) return;
-      
+
       ctx = canvas.getContext('2d');
       if (!ctx) return;
 
@@ -153,27 +153,27 @@
     }
 
     // Event listeners
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', function () {
       resize();
       createParticles();
     });
-    
+
     document.addEventListener('visibilitychange', handleVisibility);
 
     // IMPORTANTE: Reinicializar después de View Transitions de Astro
-    document.addEventListener('astro:page-load', function() {
+    document.addEventListener('astro:page-load', function () {
       init();
     });
 
-    document.addEventListener('astro:after-swap', function() {
+    document.addEventListener('astro:after-swap', function () {
       init();
     });
 
     // Observar cambios de tema
-    const observer = new MutationObserver(function() {
+    const observer = new MutationObserver(function () {
       // El color se actualizará automáticamente en el próximo frame
     });
-    
+
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
   })();
 </script>

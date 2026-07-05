@@ -22,7 +22,8 @@ const projects = [
   {
     id: 'presentza',
     title: t.projects.presentza.title,
-    shortDescription: 'A mobile-first website for a perfumery to showcase products and streamline customer interactions.',
+    shortDescription:
+      'A mobile-first website for a perfumery to showcase products and streamline customer interactions.',
     fullDescription: t.projects.presentza.description,
     techStack: t.projects.presentza.techStack,
     techTags: ['React 19', 'Vite'],
@@ -33,7 +34,8 @@ const projects = [
   {
     id: 'adn',
     title: t.projects.adn.title,
-    shortDescription: 'Web application for generating personalized QR codes for members identification and access control. Includes automated email module.',
+    shortDescription:
+      'Web application for generating personalized QR codes for members identification and access control. Includes automated email module.',
     fullDescription: t.projects.adn.description,
     techStack: t.projects.adn.techStack,
     techTags: ['FastAPI', 'React', 'PostgreSQL', 'AWS S3'],
@@ -44,7 +46,8 @@ const projects = [
   {
     id: 'biolaboratorio',
     title: t.projects.biolaboratorio.title,
-    shortDescription: 'Full stack freelance project to manage occupational orders and medical records for BioLaboratorio.',
+    shortDescription:
+      'Full stack freelance project to manage occupational orders and medical records for BioLaboratorio.',
     fullDescription: t.projects.biolaboratorio.description,
     techStack: t.projects.biolaboratorio.techStack,
     techTags: ['Angular 17', 'Spring Boot', 'PostgreSQL', 'AWS S3'],
@@ -55,7 +58,8 @@ const projects = [
   {
     id: 'mies',
     title: t.projects.mies.title,
-    shortDescription: 'Web application for registering information about children intervened on the streets of Ecuador.',
+    shortDescription:
+      'Web application for registering information about children intervened on the streets of Ecuador.',
     fullDescription: t.projects.mies.description,
     techStack: t.projects.mies.techStack,
     techTags: ['Angular 14', 'PHP 7', 'MySQL'],
@@ -103,11 +107,21 @@ const projects = [
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="mb-12">
-        <a 
-          href="/" 
+        <a
+          href="/"
           class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors mb-4"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg
+          >
           Back to Home
         </a>
         <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
@@ -117,32 +131,36 @@ const projects = [
 
       <!-- Projects Grid - 2 columns on desktop, 1 on mobile -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {projects.map((project) => (
-          <ProjectCard
-            id={project.id}
-            title={project.title}
-            shortDescription={project.shortDescription}
-            image={project.image}
-            imageAlt={project.title}
-            techTags={project.techTags}
-            href={project.href}
-            lang="en"
-          />
-        ))}
+        {
+          projects.map((project) => (
+            <ProjectCard
+              id={project.id}
+              title={project.title}
+              shortDescription={project.shortDescription}
+              image={project.image}
+              imageAlt={project.title}
+              techTags={project.techTags}
+              href={project.href}
+              lang="en"
+            />
+          ))
+        }
       </div>
     </div>
   </section>
 
   <!-- Modals for each project -->
-  {projects.map((project) => (
-    <ProjectModal
-      id={project.id}
-      title={project.title}
-      description={project.fullDescription}
-      techStack={project.techStack}
-      href={project.href}
-      ctaText={project.cta}
-      lang="en"
-    />
-  ))}
+  {
+    projects.map((project) => (
+      <ProjectModal
+        id={project.id}
+        title={project.title}
+        description={project.fullDescription}
+        techStack={project.techStack}
+        href={project.href}
+        ctaText={project.cta}
+        lang="en"
+      />
+    ))
+  }
 </Layout>

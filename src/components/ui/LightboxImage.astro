@@ -43,31 +43,31 @@ fullSizeUrl = fullSizeUrl || (typeof src === 'string' ? src : '');
 </div>
 
 <script is:inline define:vars={{ uniqueId }}>
-  (function() {
+  (function () {
     const trigger = document.querySelector('[data-lightbox-id="' + uniqueId + '"]');
     const overlay = document.getElementById('lightbox-' + uniqueId);
     const closeBtn = document.querySelector('[data-lightbox-close="' + uniqueId + '"]');
-    
+
     if (trigger && overlay) {
-      trigger.addEventListener('click', function(e) {
+      trigger.addEventListener('click', function (e) {
         e.preventDefault();
         overlay.style.display = 'flex';
         document.body.style.overflow = 'hidden';
       });
-      
-      closeBtn.addEventListener('click', function() {
+
+      closeBtn.addEventListener('click', function () {
         overlay.style.display = 'none';
         document.body.style.overflow = '';
       });
-      
-      overlay.addEventListener('click', function(e) {
+
+      overlay.addEventListener('click', function (e) {
         if (e.target === overlay) {
           overlay.style.display = 'none';
           document.body.style.overflow = '';
         }
       });
-      
-      document.addEventListener('keydown', function(e) {
+
+      document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && overlay.style.display === 'flex') {
           overlay.style.display = 'none';
           document.body.style.overflow = '';
@@ -90,11 +90,13 @@ fullSizeUrl = fullSizeUrl || (typeof src === 'string' ? src : '');
     height: auto;
     border-radius: 8px;
     cursor: zoom-in;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
   }
   .expandable-image a:hover img {
     transform: scale(1.02);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   }
   .expandable-image figcaption {
     margin-top: 0.5rem;

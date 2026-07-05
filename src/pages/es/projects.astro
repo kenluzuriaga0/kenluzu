@@ -22,7 +22,8 @@ const projects = [
   {
     id: 'presentza',
     title: t.projects.presentza.title,
-    shortDescription: 'Sitio web mobile-first para una perfumería para mostrar productos y agilizar interacciones con clientes.',
+    shortDescription:
+      'Sitio web mobile-first para una perfumería para mostrar productos y agilizar interacciones con clientes.',
     fullDescription: t.projects.presentza.description,
     techStack: t.projects.presentza.techStack,
     techTags: ['React 19', 'Vite'],
@@ -33,7 +34,8 @@ const projects = [
   {
     id: 'adn',
     title: t.projects.adn.title,
-    shortDescription: 'Aplicación web para generar códigos QR personalizados para identificación y control de acceso de miembros. Incluye módulo de emails automatizado.',
+    shortDescription:
+      'Aplicación web para generar códigos QR personalizados para identificación y control de acceso de miembros. Incluye módulo de emails automatizado.',
     fullDescription: t.projects.adn.description,
     techStack: t.projects.adn.techStack,
     techTags: ['FastAPI', 'React', 'PostgreSQL', 'AWS S3'],
@@ -103,11 +105,21 @@ const projects = [
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="mb-12">
-        <a 
-          href="/es" 
+        <a
+          href="/es"
           class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors mb-4"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg
+          >
           Volver al Inicio
         </a>
         <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
@@ -117,32 +129,36 @@ const projects = [
 
       <!-- Projects Grid - 2 columns on desktop, 1 on mobile -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {projects.map((project) => (
-          <ProjectCard
-            id={project.id}
-            title={project.title}
-            shortDescription={project.shortDescription}
-            image={project.image}
-            imageAlt={project.title}
-            techTags={project.techTags}
-            href={project.href}
-            lang="es"
-          />
-        ))}
+        {
+          projects.map((project) => (
+            <ProjectCard
+              id={project.id}
+              title={project.title}
+              shortDescription={project.shortDescription}
+              image={project.image}
+              imageAlt={project.title}
+              techTags={project.techTags}
+              href={project.href}
+              lang="es"
+            />
+          ))
+        }
       </div>
     </div>
   </section>
 
   <!-- Modals for each project -->
-  {projects.map((project) => (
-    <ProjectModal
-      id={project.id}
-      title={project.title}
-      description={project.fullDescription}
-      techStack={project.techStack}
-      href={project.href}
-      ctaText={project.cta}
-      lang="es"
-    />
-  ))}
+  {
+    projects.map((project) => (
+      <ProjectModal
+        id={project.id}
+        title={project.title}
+        description={project.fullDescription}
+        techStack={project.techStack}
+        href={project.href}
+        ctaText={project.cta}
+        lang="es"
+      />
+    ))
+  }
 </Layout>

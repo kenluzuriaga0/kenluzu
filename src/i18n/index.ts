@@ -15,7 +15,6 @@ export function getCurrentLanguage(pathname: string): Language {
 
 export function getAlternateLanguageUrl(pathname: string): string {
   const currentLang = getCurrentLanguage(pathname);
-  const targetLang = currentLang === 'en' ? 'es' : 'en';
 
   if (currentLang === 'en') {
     // Estamos en /, ir a /es

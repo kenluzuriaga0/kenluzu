@@ -99,6 +99,12 @@ export const translations = {
       title: 'Skills',
       subtitle: 'Tools from my batman belt 🦇',
     },
+    contact: {
+      title: "Let's build something",
+      subtitle: "Got a project in mind? I'd love to hear what you're building.",
+      cta: 'Email me',
+      connect: 'Or find me here',
+    },
     footer: {
       madeBy: 'Made by Ken Luzuriaga · All rights reserved.',
     },
@@ -120,8 +126,8 @@ export const translations = {
         'Soy un desarrollador enfocado en backend con pasión por el aprendizaje y el crecimiento. Disfruto trabajar en equipo y siempre estoy abierto a explorar otras áreas de la informática.',
     },
     blog: {
-      title: 'Explora mis artículos aleatorios en mi blog',
-      info: 'Intentaré escribir sobre lo que aprendo o lo que me dé un momento de "¡Oh, Wow!"',
+      title: 'Explora mis artículos en mi blog',
+      info: 'Intentaré escribir sobre lo que aprendo o lo que me dé una sensación de "¡Oh, Wow!"',
       viewAll: 'Ver todos los posts',
     },
     about: {
@@ -202,6 +208,12 @@ export const translations = {
     skills: {
       title: 'Habilidades',
       subtitle: 'Herramientas de mi cinturón de Batman 🦇',
+    },
+    contact: {
+      title: 'Construyamos algo',
+      subtitle: '¿Tienes un proyecto en mente? Me encantaría saber qué estás construyendo.',
+      cta: 'Escríbeme',
+      connect: 'O encuéntrame aquí',
     },
     footer: {
       madeBy: 'Hecho por Ken Luzuriaga · Todos los derechos reservados.',

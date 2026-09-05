@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
 
 import Header from '~/components/widgets/Header.astro';
 import Hero from '~/components/widgets/Hero.astro';
@@ -105,6 +106,12 @@ interface Props {
       title: string;
       subtitle: string;
     };
+    contact: {
+      title: string;
+      subtitle: string;
+      cta: string;
+      connect: string;
+    };
     footer: {
       madeBy: string;
     };
@@ -132,7 +139,7 @@ const metadata = {
       actions={[
         {
           text: t.nav.hireMe,
-          href: '#',
+          href: '#contact',
         },
       ]}
       isSticky
@@ -421,4 +428,49 @@ const metadata = {
       },
     ]}
   />
+
+  <!-- Contact Widget **************** -->
+
+  <section id="contact" class="py-12 lg:py-20">
+    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl">{t.contact.title}</h2>
+      <p class="mt-4 text-lg text-muted dark:text-slate-400">{t.contact.subtitle}</p>
+
+      <div class="mt-8">
+        <a href="mailto:kenluzuriaga0@hotmail.com" class="btn btn-primary inline-flex items-center gap-2">
+          <Icon name="tabler:mail" class="w-5 h-5" />
+          {t.contact.cta}
+        </a>
+      </div>
+
+      <div class="mt-10">
+        <p class="text-sm text-muted dark:text-slate-400 mb-3">{t.contact.connect}</p>
+        <ul class="flex justify-center gap-2">
+          {
+            [
+              {
+                ariaLabel: 'LinkedIn',
+                icon: 'tabler:brand-linkedin',
+                href: 'https://www.linkedin.com/in/kenluzuriaga0',
+              },
+              { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/kenluzuriaga0' },
+              { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/ken_nlm' },
+            ].map(({ ariaLabel, icon, href }) => (
+              <li>
+                <a
+                  class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+                  aria-label={ariaLabel}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon name={icon} class="w-5 h-5" />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
 </Layout>

@@ -1,0 +1,49 @@
+---
+// Detects the visitor's browser language on their very first visit to the
+// site root and redirects to /es when Spanish is preferred. Never runs again
+// once a decision has been made, so it never fights a manual EN/ES choice.
+---
+
+<script is:inline>
+  (function () {
+    try {
+      if (window.location.pathname !== '/') return;
+
+      var STORAGE_KEY = 'lang-pref-decided';
+
+      var alreadyDecided = null;
+      try {
+        alreadyDecided = localStorage.getItem(STORAGE_KEY);
+      } catch (e) {
+        alreadyDecided = null;
+      }
+      if (alreadyDecided) return;
+
+      var candidates =
+        navigator.languages && navigator.languages.length
+          ? navigator.languages
+          : [navigator.language || navigator.userLanguage || ''];
+
+      var prefersSpanish = false;
+      for (var i = 0; i < candidates.length; i++) {
+        if (candidates[i] && candidates[i].toLowerCase().indexOf('es') === 0) {
+          prefersSpanish = true;
+          break;
+        }
+      }
+
+      try {
+        localStorage.setItem(STORAGE_KEY, '1');
+      } catch (e) {
+        // Storage unavailable (e.g. private browsing): skip persisting.
+        // Worst case, detection just runs again on the next visit.
+      }
+
+      if (prefersSpanish) {
+        window.location.replace('/es');
+      }
+    } catch (e) {
+      // Never block the page from loading: fall back to the default (English).
+    }
+  })();
+</script>

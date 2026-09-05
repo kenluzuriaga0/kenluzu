@@ -1,7 +1,9 @@
 # build output
 dist/
 .output/
-
+.agents/
+.codex/
+.claude/
 # dependencies
 node_modules/
 

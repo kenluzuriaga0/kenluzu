@@ -71,6 +71,7 @@ const {
             <h1
               id="typing-effect"
               class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+              set:html={title}
             />
           )
         }
@@ -114,14 +115,24 @@ const {
     document.addEventListener('astro:page-load', () => {
       // Verificamos si el elemento ya existe para no crear múltiples animaciones
       const element = document.querySelector('#typing-effect');
-      if (element) {
-        new (TypeIt as typeof TypeIt)(element as HTMLElement, {
-          strings: ['Ken Luzuriaga'],
-          speed: 130,
-          loop: false,
-          waitUntilVisible: true,
-        }).go();
-      }
+      if (!element) return;
+
+      // The heading already has the real name rendered server-side (see Hero.astro's
+      // set:html={title}); respect reduced-motion by leaving that static text alone
+      // instead of animating it.
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
+
+      // No `strings` option: TypeIt reads the element's existing text and types it
+      // out, so the animated name always matches what's already in the markup.
+      // No `waitUntilVisible`: TypeIt clears the element synchronously at
+      // construction time and only re-types it once its (threshold: 1)
+      // IntersectionObserver fires; the hero is always in the first viewport, so
+      // gating on that observer only risks leaving the name blank if it never fires.
+      new (TypeIt as typeof TypeIt)(element as HTMLElement, {
+        speed: 130,
+        loop: false,
+      }).go();
     });
   </script>
 </section>

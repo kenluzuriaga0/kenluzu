@@ -9,23 +9,23 @@
     try {
       if (window.location.pathname !== '/') return;
 
-      var STORAGE_KEY = 'lang-pref-decided';
+      const STORAGE_KEY = 'lang-pref-decided';
 
-      var alreadyDecided = null;
+      let alreadyDecided = null;
       try {
         alreadyDecided = localStorage.getItem(STORAGE_KEY);
-      } catch (e) {
+      } catch {
         alreadyDecided = null;
       }
       if (alreadyDecided) return;
 
-      var candidates =
+      const candidates =
         navigator.languages && navigator.languages.length
           ? navigator.languages
           : [navigator.language || navigator.userLanguage || ''];
 
-      var prefersSpanish = false;
-      for (var i = 0; i < candidates.length; i++) {
+      let prefersSpanish = false;
+      for (let i = 0; i < candidates.length; i++) {
         if (candidates[i] && candidates[i].toLowerCase().indexOf('es') === 0) {
           prefersSpanish = true;
           break;
@@ -34,7 +34,7 @@
 
       try {
         localStorage.setItem(STORAGE_KEY, '1');
-      } catch (e) {
+      } catch {
         // Storage unavailable (e.g. private browsing): skip persisting.
         // Worst case, detection just runs again on the next visit.
       }
@@ -42,7 +42,7 @@
       if (prefersSpanish) {
         window.location.replace('/es');
       }
-    } catch (e) {
+    } catch {
       // Never block the page from loading: fall back to the default (English).
     }
   })();

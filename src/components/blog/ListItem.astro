@@ -21,7 +21,9 @@ const image = (await findImage(post.image)) as ImageMetadata | undefined;
 const link = APP_BLOG?.post?.isEnabled ? getPostPermalink(post) : '';
 ---
 
-<article class="flex h-full flex-col gap-4 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+<article
+  class="flex h-full flex-col gap-4 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+>
   {
     image &&
       (link ? (

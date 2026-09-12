@@ -131,10 +131,10 @@ const metadata = {
       lang={lang}
       links={[
         { text: t.nav.home, href: '#' },
-        { text: t.nav.blog, href: '#blog' },
+        { text: t.nav.blog, href: lang === 'es' ? '/es/blog' : '/blog' },
         { text: t.nav.about, href: '#about' },
         { text: t.nav.resume, href: '#resume' },
-        { text: t.nav.portfolio, href: '#portfolio' },
+        { text: t.nav.portfolio, href: lang === 'es' ? '/es/projects' : '/projects' },
       ]}
       actions={[
         {
@@ -291,12 +291,6 @@ const metadata = {
             width: 480,
             height: 230,
           }}
-          callToAction={{
-            target: '_blank',
-            text: t.projects.presentza.cta,
-            icon: 'tabler:chevron-right',
-            href: 'https://presentza.netlify.app/',
-          }}
         >
           <Fragment slot="content">
             <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
@@ -326,12 +320,6 @@ const metadata = {
             width: 480,
             height: 230,
           }}
-          callToAction={{
-            target: '_blank',
-            text: t.projects.adn.cta,
-            icon: 'tabler:chevron-right',
-            href: 'https://app.asociaciondeportivanaval.com/',
-          }}
         >
           <Fragment slot="content">
             <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
@@ -358,12 +346,6 @@ const metadata = {
             src: '~/assets/images/projects/biolaboratorio.png',
             alt: 'BioLaboratorio Image',
             height: 230,
-          }}
-          callToAction={{
-            target: '_blank',
-            text: t.projects.biolaboratorio.cta,
-            icon: 'tabler:chevron-right',
-            href: 'https://biolaboratorio.up.railway.app',
           }}
         >
           <Fragment slot="content">

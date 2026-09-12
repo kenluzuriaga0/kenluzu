@@ -30,7 +30,7 @@ export const translations = {
       title: 'Work experience',
       jobs: {
         farmcorp: {
-          title: 'Application Arquitect',
+          title: 'Software Arquitect',
           company: 'Farmcorp',
           location: 'Samborondón',
           period: 'May/2026 - Present',
@@ -39,7 +39,7 @@ export const translations = {
         },
         trescloud: {
           title: 'Software Developer',
-          company: 'Trescloud LTDA',
+          company: 'Trescloud',
           location: 'Quito',
           period: 'Ago/2022 - April/2026',
           description1:
@@ -140,7 +140,7 @@ export const translations = {
       title: 'Experiencia laboral',
       jobs: {
         farmcorp: {
-          title: 'Arquitecto de aplicaciones',
+          title: 'Arquitecto de software',
           company: 'Farmcorp',
           location: 'Samborondón',
           period: 'Mayo/2026 - Presente',
@@ -149,7 +149,7 @@ export const translations = {
         },
         trescloud: {
           title: 'Desarrollador de Software',
-          company: 'Trescloud LTDA',
+          company: 'Trescloud',
           location: 'Quito',
           period: 'Ago/2022 - Abril/2026',
           description1:
